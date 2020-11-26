@@ -25,7 +25,8 @@
     }
 
     h4{
-      color: blue;
+      font-weight: bold;
+      color:rgb(63, 112, 206); 
     }
     
     h1{
