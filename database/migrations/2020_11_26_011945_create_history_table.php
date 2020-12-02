@@ -14,18 +14,17 @@ class CreateHistoryTable extends Migration
     public function up()
     {
         Schema::create('history', function (Blueprint $table) {
-            $table->id('history_id');
-            $table->foreignId('tugas_id');
-            $table->foreignId('user_id');
-            $table->foreignId('ruang_id');
-            $table->enum('status', ['SUDAH', 'BELUM']);
-            $table->string('bukti1');
-            $table->string('bukti2');
-            $table->string('bukti3');
-            $table->string('bukti4');
-            $table->string('bukti5');
-            $table->dateTime('tanggal_penugasan', 0);
-            $table->dateTime('tanggal_selesai', 0);
+            $table->increments('id_history');
+            $table->integer('id_tugas')->unsigned();
+            $table->foreign('id_tugas')->references('id_tugas')->on('tugas');
+            $table->enum('old_status', ['SUDAH', 'BELUM']);
+            $table->string('old_bukti1')->nullable();
+            $table->string('old_bukti2')->nullable();
+            $table->string('old_bukti3')->nullable();
+            $table->string('old_bukti4')->nullable();
+            $table->string('old_bukti5')->nullable();
+            $table->dateTime('old_tanggal_penugasan', 0)->nullable();
+            $table->dateTime('old_tanggal_selesai', 0)->nullable();
         });
     }
 

@@ -14,17 +14,19 @@ class CreateTugasTable extends Migration
     public function up()
     {
         Schema::create('tugas', function (Blueprint $table) {
-            $table->id('tugas_id');
-            $table->foreignId('user_id');
-            $table->foreignId('ruang_id');
+            $table->increments('id_tugas');
+            $table->integer('id_user')->unsigned();
+            $table->integer('id_ruang')->unsigned();
+            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_ruang')->references('id_ruang')->on('ruang');
             $table->enum('status', ['SUDAH', 'BELUM']);
-            $table->string('bukti1');
-            $table->string('bukti2');
-            $table->string('bukti3');
-            $table->string('bukti4');
-            $table->string('bukti5');
-            $table->dateTime('tanggal_penugasan', 0);
-            $table->dateTime('tanggal_selesai', 0);
+            $table->string('bukti1')->nullable();
+            $table->string('bukti2')->nullable();
+            $table->string('bukti3')->nullable();
+            $table->string('bukti4')->nullable();
+            $table->string('bukti5')->nullable();
+            $table->dateTime('tanggal_penugasan', 0)->nullable();
+            $table->dateTime('tanggal_selesai', 0)->nullable();
         });
     }
 
