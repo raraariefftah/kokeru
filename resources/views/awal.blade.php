@@ -23,78 +23,175 @@
         background-color: transparent;
         text-decoration: none;
     }
+
+    h4{
+      color: blue;
+    }
+    
+    h1{
+      font-weight: bold;
+      color: white;
+    }
+
+    p{
+      color: white;
+    }
+    
+    body{
+      background-color:rgba(152, 207, 255, 0.2);
+    }
 </style>
 
 <body>
 <section id="awal" class="awal">
-    <div class="container">
-      <div class="row mb-4 pt-4">
+    <div class="container-fluid pb-4">
+    <!-- Title -->
+      <div class="row pt-5">
         <div class="col text-center">
           <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
           <h4>Gedung Bersama Maju</h4><br>
           <h4>Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h4>
         </div>
       </div>
+    <!-- /.Title -->
 
-        <!-- row -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box text-center bg-success">
-              <div class="inner">
-                <h3>R.123</h3>
+    <!-- Content -->
+      <div class="row pl-5">
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+            <!-- Box -->
+            <div class="card-body text-center bg-success">
+              <div class="card-content">
+                <h1>R.123</h1>
                 <p>SUDAH</p>
                 <p>Doni Kusumah</p>
                 <a href="#" class="box-link">&lt;&lt;detil&gt;&gt;</a>
               </div>
+              <!-- /.Box -->
             </div>
-          </div>
-
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box text-center bg-success">
-              <div class="inner">
-                <h3>R.123</h3>
-                <p>SUDAH</p>
-                <p>Doni Kusumah</p>
-                <a href="#" class="box-link">&lt;&lt;detil&gt;&gt;</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box text-center bg-success">
-              <div class="inner">
-                <h3>R.123</h3>
-                <p>SUDAH</p>
-                <p>Doni Kusumah</p>
-                <a href="#" class="box-link">&lt;&lt;detil&gt;&gt;</a>
-              </div>
-            </div>
-          </div>
-        
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box text-center bg-success">
-              <div class="inner">
-                <h3>R.123</h3>
-                <p>SUDAH</p>
-                <p>Doni Kusumah</p>
-                <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- ./col -->
+            <!-- /.col -->
         </div>
-       <!-- /.row -->
+        
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+            <!-- Info Boxes Style 2 -->
+            <div class="card-body text-center" style="background-color:rgb(219, 96, 0);">
+              <div class="card-content">
+                <h1>R.143</h1>
+                <p>BELUM</p>
+                <p>Doni Kusumah</p>
+                <a href="#" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.col -->
+        </div>
+
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.183</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="#" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.129</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.129</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+      
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.129</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.129</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+        
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.129</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+        <div class="col-lg-3 col-6 pt-5 pr-5">
+              <!-- Info Boxes Style 2 -->
+              <div class="card-body text-center bg-success">
+                <div class="card-content">
+                  <h1>R.129</h1>
+                  <p>SUDAH</p>
+                  <p>Doni Kusumah</p>
+                  <a href="/c" class="box-link">&lt;&lt;detil&gt;&gt;</a>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+        
+        <!-- /.row -->
+      </div>
+    <!-- /.content -->
+    <!-- /.container -->
     </div>
-     <!-- /.container -->
-  </section>
+</section>
 
 
 <!-- jQuery -->
