@@ -24,7 +24,7 @@ Route::get('/pop', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard_admin', function () {
     return view('admin.dashboard_admin');
