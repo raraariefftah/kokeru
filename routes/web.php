@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-   return view('awal');
+    return view('awal');
 });
 
 Route::get('/pop', function () {
     return view('pop');
 });
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -37,3 +37,6 @@ Route::get('/dashboard_manager', function () {
 Route::get('/dashboard_cs', function () {
     return view('cs.dashboard_cs');
 });
+
+
+//Route::resource('tugas', 'TugasController');
