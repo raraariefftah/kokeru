@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('awal');
-});
+//Route::get('/', function () {
+//    return view('awal');
+//});
 
 Route::get('/pop', function () {
     return view('pop');
@@ -24,4 +24,4 @@ Route::get('/pop', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
