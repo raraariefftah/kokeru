@@ -25,7 +25,7 @@
           <!-- 2  -->
           <li class="nav-item">
             <a href="/dashboard_manager" class="nav-link" >
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-pencil-alt"></i>
               <p> Edit Profil </p>
             </a>
           </li>
