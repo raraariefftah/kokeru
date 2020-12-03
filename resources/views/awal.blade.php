@@ -1,3 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Kokeru</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('/style/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{asset('/style/dist/css/adminlte.min.css')}}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<style>
+    a{
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    h4{
+      font-weight: bold;
+      color:rgb(63, 112, 206); 
+    }
+    
+    h1{
+      font-weight: bold;
+      color: white;
+    }
+
+    p{
+      color: white;
+    }
+    
+    body{
+      background-color:rgba(152, 207, 255, 0.2);
+    }
+</style>
+
+<body>
 @extends('layouts.app')
 
 {{--<!DOCTYPE html>--}}

@@ -24,4 +24,17 @@ Route::get('/pop', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dashboard_admin', function () {
+    return view('admin.dashboard_admin');
+});
+
+Route::get('/dashboard_manager', function () {
+    return view('manajer.dashboard_manager');
+});
+
+Route::get('/dashboard_cs', function () {
+    return view('cs.dashboard_cs');
+});
 Route::get('/', 'HomeController@index')->name('home');
