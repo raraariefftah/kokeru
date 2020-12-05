@@ -24,49 +24,13 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('partials.sidebar')
+  @include('partials.sidebar_manager')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Data Cleaning Service</h3>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        <div class="container-fluid">
-            <table id="table1" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>User_id</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td> <button type="button" class="btn btn-danger">Danger</button></td>
-            </tr>
-            </table>
-        </div>
-      </div>
-      <!-- /.card-body -->
-    </div>
+    @yield('content')
   </div>
   <!-- /.content-wrapper -->
-
-  <!-- <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.5
-    </div>
-    <strong>Copyright <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer> -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
