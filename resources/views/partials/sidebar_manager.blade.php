@@ -14,21 +14,45 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!--1  -->
+          <!-- 1 -->
           <li class="nav-item">
-            <a href="/dashboard_manager" class="nav-link" action="">
-              <i class="nav-icon fas fa-copy"></i>
-              <p> Daftar Tugas </p>
+            <a href="#" class="nav-link" action="">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p> Dashboard </p>
             </a>
           </li>
 
           <!-- 2  -->
           <li class="nav-item">
-            <a href="/dashboard_manager" class="nav-link" >
+            <a href="#" class="nav-link" >
+              <i class="nav-icon fas fa-copy"></i>
+              <p> Daftar Tugas </p>
+            </a>
+          </li>
+
+          <!-- 3  -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" >
+              <i class="nav-icon fas fa-home"></i>
+              <p> Daftar Ruangan </p>
+            </a>
+          </li>
+
+          <!-- 4  -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" >
+              <i class="nav-icon fas fa-user"></i>
+              <p> Daftar Cs </p>
+            </a>
+          </li>
+
+          <!-- 4  -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" >
               <i class="nav-icon fas fa-pencil-alt"></i>
               <p> Edit Profil </p>
             </a>
-          </li>
+          </li> 
 
         </ul>
       </nav>
