@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('awal');
-});
+Route::get('/', 'TugasController@index');
 
 Route::get('/pop', function () {
     return view('pop');
@@ -24,19 +22,4 @@ Route::get('/pop', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/dashboard_admin', function () {
-    return view('admin.dashboard_admin');
-});
-
-Route::get('/dashboard_manager', function () {
-    return view('manajer.dashboard_manager');
-});
-
-Route::get('/dashboard_cs', function () {
-    return view('cs.dashboard_cs');
-});
-
-
-//Route::resource('tugas', 'TugasController');
+Route::get('/home', 'HomeController@index')->name('home');
