@@ -20,8 +20,8 @@ Route::get('/pop', function () {
     return view('pop');
 });
 
-Route::get('/dashboard_cs', function () {
-    return view('/cs/dashboard_cs');
+Route::get('/dashboard', function () {
+    return view('/manajer/dashboard_manager');
 });
 
 // Route::get('/dashboard_manager/daftar_tugas/laporan/pdf_laporan', function () {

@@ -28,7 +28,121 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    @yield('content')
+    @section('content')
+      <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <h1 class="pt-4 pb-3">Dashboard</h1>
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info" >
+                                <div class="inner">
+                                    <h3>50</h3>
+                                    <p>Jumlah CS</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box " style="background-color: rgb(145, 123, 212)">
+                                <div class="inner" style="color: white">
+                                    <h3>10</h3>
+                                    <p>Jumlah Ruangan</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-home"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>50</h3>
+                                    <p>Sudah Dibersihkan</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-checkmark"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>50</h3>
+                                    <p>Belum Dibersihkan</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-close"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="card">
+                    <section id="awal" class="awal">
+                        <div class="container">
+                            <div class="row mb-4 pt-4">
+                                <div class="col text-center" style="color :rgb(63, 112, 206);"">
+                                <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
+                                <h4>Gedung Bersama Maju</h4><br>
+                                <h4>Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h4>
+                            </div>
+                        </div>
+
+
+                    <!-- row -->
+                    <div class=" row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                                <div class="small-box text-center bg-success">
+                                    <div class="inner">
+                                        <h3>R.123</h3>
+                                        <p>SUDAH</p>
+                                        <p>Doni Kusumah</p>
+                                        <a href="#" class="box-link" style="color: white">&lt;&lt;detil&gt;&gt;</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- /.content-wrapper -->
+                    
+              {{-- <!-- row -->
+              <div class="row">
+                  @foreach($tugas as $job)
+                      <div class="col-lg-3 col-6">
+                          <!-- small card -->
+                          <div class="small-box text-center {{$job->status == 'SUDAH'? 'bg-success' : 'bg-warning'}}">
+                              <div class="inner">
+                                  <h3>{{$job->nama_ruang}}</h3>
+                                  <p>{{$job->status}}</p>
+                                  <p>{{$job->nama}}</p>
+                                  <a href="#" class="box-link" style="color: white">&lt;&lt;detil&gt;&gt;</a>
+                              </div>
+                          </div>
+                      </div>
+              @endforeach --}}
+
+              <!-- ./col -->
+              </div>
+              <!-- /.row -->
+          </div>
+          <!-- /.container -->
+      </section>
+
+    @endsection
   </div>
   <!-- /.content-wrapper -->
 
