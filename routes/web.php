@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('awal');
-//});
+Route::get('/', 'TugasController@index');
 
 Route::get('/pop', function () {
     return view('pop');
@@ -24,4 +22,4 @@ Route::get('/pop', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
