@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('awal');
-//});
+Route::get('/', function () {
+    return view('awal');
+});
 
 Route::get('/pop', function () {
     return view('pop');
@@ -37,4 +37,22 @@ Route::get('/dashboard_manager', function () {
 Route::get('/dashboard_cs', function () {
     return view('cs.dashboard_cs');
 });
-Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/tugas_manajer', function () {
+    return view('manajer.tugas');
+});
+
+Route::get('/ruang_manajer', function () {
+    return view('manajer.ruang');
+});
+
+Route::get('/laporan_manajer', function () {
+    return view('manajer.laporan');
+});
+
+Route::get('/penugasan_cs', function () {
+    return view('cs.penugasan');
+});
+
+
+//Route::get('/', 'HomeController@index')->name('home');

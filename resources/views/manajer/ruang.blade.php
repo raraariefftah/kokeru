@@ -1,10 +1,10 @@
-@extends('cs/dashboard_cs')
+@extends('manajer/dashboard_manager')
 
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Penugasan</h3>
+        <h3 class="card-title">Daftar Ruang</h3>
       </div>
       <!-- /.card-header -->
       <div class="card-body">
@@ -13,7 +13,9 @@
             <thead>
             <tr>
                 <th>Nama Ruang</th>
+                <th>Nama CS</th>
                 <th>Bukti</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -21,7 +23,9 @@
             <tr>
                 <td>-</td>
                 <td>-</td>
-                <td> <button type="button" class="btn btn-success">Danger</button></td>
+                <td>-</td>
+                <td>-</td>
+                <td> <button type="button" class="btn btn-danger">Reset</button></td>
             </tr>
             </table>
         </div>

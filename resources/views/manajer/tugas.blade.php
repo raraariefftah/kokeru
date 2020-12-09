@@ -1,4 +1,4 @@
-@extends('dashboard_manager')
+@extends('manajer/dashboard_manager')
 
 @section('content')
     <!-- Content Header (Page header) -->
