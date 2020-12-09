@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="dashboard_manager" class="brand-link">
+    <a href="../../index3.html" class="brand-link">
       <img src="{{ asset('/style/dist/img/AdminLTELogo.png')}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -16,25 +16,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!--1  -->
           <li class="nav-item">
-            <a href="ruang_manajer" class="nav-link" action="">
+            <a href="/dashboard_manager" class="nav-link" action="">
               <i class="nav-icon fas fa-copy"></i>
-              <p> Ruangan </p>
-            </a>
-          </li>
-
-          <!-- 2  -->
-          <li class="nav-item">
-            <a href="/tugas_manajer" class="nav-link" >
-              <i class="nav-icon fas fa-pencil-alt"></i>
-              <p> Penugasan </p>
-            </a>
-          </li>
-
-          <!-- 2  -->
-          <li class="nav-item">
-            <a href="/laporan_manajer" class="nav-link" >
-              <i class="nav-icon fas fa-pencil-alt"></i>
-              <p> Laporan </p>
+              <p> Daftar Tugas </p>
             </a>
           </li>
 
