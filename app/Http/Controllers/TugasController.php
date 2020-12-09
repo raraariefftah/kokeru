@@ -15,7 +15,7 @@ class TugasController extends Controller
             ->get();
 
 //        var_dump($tugas);
-        return view('awal', ['tugas' => $tugas]);
+        return view('awal', ['jobs' => $tugas]);
     }
 
     /**
