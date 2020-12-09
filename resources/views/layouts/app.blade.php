@@ -16,18 +16,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('/style/dist/css/adminlte.min.css')}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 
 </head>
-<body>
+<body style="background-color: rgba(152, 207, 255, 0.2);">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -51,11 +45,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -84,15 +78,6 @@
             @yield('content')
         </main>
     </div>
-
-{{--    <!-- jQuery -->--}}
-{{--    <script src="{{asset('/style/plugins/jquery/jquery.min.js')}}"></script>--}}
-{{--    <!-- Bootstrap 4 -->--}}
-{{--    <script src="{{asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>--}}
-{{--    <!-- AdminLTE App -->--}}
-{{--    <script src="{{asset('/style/dist/js/adminlte.min.js')}}"></script>--}}
-{{--    <!-- AdminLTE for demo purposes -->--}}
-{{--    <script src="{{asset('/style/dist/js/demo.js')}}"></script>--}}
 
 </body>
 </html>

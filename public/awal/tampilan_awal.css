@@ -1,0 +1,28 @@
+a {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+/* h6 {
+    font-weight: bold;
+    color: rgb(63, 112, 206);
+} */
+
+h4 {
+    font-weight: bold;
+    color: rgb(63, 112, 206);
+}
+
+h1 {
+    font-weight: bold;
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+body {
+    background-color: rgba(152, 207, 255, 0.2);
+}
