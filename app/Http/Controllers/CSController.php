@@ -43,38 +43,33 @@ class CSController extends Controller
             ->with('success','Data CS berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $cs = DB::table('users')
+            ->where('id_user', '=', $id)
+            ->first();
+//        dd($cs);
+
+        return view('manager.edit_data_cs', compact('cs'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('users')->where('id_user', '=', $id)
+            ->update([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'no_hp' => $request->no_hp,
+            ]
+        );
+
+        return redirect()->route('daftar_cs')
+            ->with('success','Data CS berhasil diubah.');
     }
 
     /**
@@ -85,6 +80,9 @@ class CSController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id_user', '=', $id)->delete();
+
+        return redirect()->route('daftar_cs')
+            ->with('success','Data CS berhasil dihapus.');
     }
 }
