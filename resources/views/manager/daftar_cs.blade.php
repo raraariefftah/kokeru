@@ -14,9 +14,12 @@
                 </div>
             @endif
             {{-- Buttom Tambah --}}
-            <form href="{{url('/manager/tambah_data_cs')}}" method="get" class="pt-3 pl-4">
-                <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button>
-            </form>
+
+            <div class="row">
+                <div class="col-sm ml-4 mt-3">
+                    <a type="button" class="btn btn-primary" href="/manager/tambah_data_cs"><i class="nav-icon fas fa-plus"> Tambah </i></a>
+                </div>
+            </div>
 
 
             <!-- Table Daftar Ruangan -->
