@@ -20,9 +20,14 @@ Route::get('/pop', function () {
     return view('pop');
 });
 
+Route::get('/customer_service', function () {
+    return view('/cs/dashboard_cs');
+});
+
 Route::get('/manager', function () {
     return view('/manager/dashboard');
 });
+
 Route::get('/manager/daftar_tugas', 'TugasController@daftarTugas');
 Route::get('/manager/daftar_ruang', 'RuangController@index');
 Route::get('/manager/daftar_cs', 'CSController@index')->name('daftar_cs');
