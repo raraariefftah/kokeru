@@ -21,7 +21,7 @@ Route::get('/pop', function () {
 });
 
 Route::get('/manager', function () {
-    return view('/manager/dashboard_manager');
+    return view('/manager/dashboard');
 });
 Route::get('/manager/daftar_tugas', 'TugasController@daftarTugas');
 Route::get('/manager/daftar_ruang', 'RuangController@index');
