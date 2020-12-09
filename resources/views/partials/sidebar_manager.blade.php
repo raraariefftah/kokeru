@@ -16,7 +16,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- 1 -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link" action="">
+                    <a href="/manager" class="nav-link" action="">
                         <i class="nav-icon fas fa-home"></i>
                         <p> Dashboard </p>
                     </a>
@@ -24,7 +24,7 @@
 
                 <!-- 2  -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/manager/daftar_tugas" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p> Daftar Tugas </p>
                     </a>
@@ -32,7 +32,7 @@
 
                 <!-- 3  -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/manager/daftar_ruang" class="nav-link">
                         <i class="nav-icon fas fa-map-marker-alt"></i>
                         <p> Daftar Ruangan </p>
                     </a>
@@ -40,9 +40,9 @@
 
                 <!-- 4  -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/manager/daftar_cs" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
-                        <p> Daftar Cs </p>
+                        <p> Daftar CS </p>
                     </a>
                 </li>
 

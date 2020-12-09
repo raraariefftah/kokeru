@@ -1,4 +1,4 @@
-@extends('dashboard_manager')
+@extends('manager.dashboard_manager')
 
 @section('content')
   <!-- Content Header (Page header) -->
@@ -7,10 +7,10 @@
       <div class="card-header">
         <h3 class="card-title">Daftar Cleaning Service</h3>
       </div>
-    
+
       {{-- Buttom Tambah --}}
       <form action="" class="pt-3 pl-4">
-            <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button> 
+            <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button>
       </form>
 
       {{-- Tambah Ruangan --}}
@@ -65,16 +65,18 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($cs as $c)
             <tr>
-                <td>1</td>
-                <td>Sekar Ajujujuju</td>
-                <td>jujur@gmail.com</td>
-                <td>08256663322</td>
-                <td> 
+                <td>{{$loop->iteration}}</td>
+                <td>{{$c->nama}}</td>
+                <td>{{$c->email}}</td>
+                <td>{{$c->no_hp}}</td>
+                <td>
                   <button type="button" class="btn btn-warning mr-2"><i class="nav-icon fas fa-edit"></i></button>
                   <button type="button" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
                 </td>
             </tr>
+                @endforeach
             </table>
         </div>
       </div>

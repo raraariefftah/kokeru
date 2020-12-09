@@ -79,16 +79,5 @@
         </main>
     </div>
 
-{{--    <!-- jQuery -->--}}
-{{--    <script src="{{asset('/style/plugins/jquery/jquery.min.js')}}"></script>--}}
-{{--    <!-- Bootstrap 4 -->--}}
-{{--    <script src="{{asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>--}}
-{{--    <!-- AdminLTE App -->--}}
-{{--    <script src="{{asset('/style/dist/js/adminlte.min.js')}}"></script>--}}
-{{--    <!-- AdminLTE for demo purposes -->--}}
-{{--    <script src="{{asset('/style/dist/js/demo.js')}}"></script>--}}
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-
 </body>
 </html>

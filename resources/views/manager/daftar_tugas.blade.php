@@ -1,4 +1,4 @@
-@extends('dashboard_manager')
+@extends('manager.dashboard_manager')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -7,19 +7,19 @@
         <div class="card-header">
           <h3 class="card-title">Daftar Tugas</h3>
         </div>
-      
+
         <form>
           <div class="form-row align-items-center pt-3 pl-4">
             <div class="col-auto">
-            <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button> 
+            <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button>
             </div>
             <div class="col-auto">
-            <button type="button" class="btn btn-primary" style="background-color: rebeccapurple"><i class="nav-icon fas fa-file"> Laporan </i></button> 
+            <button type="button" class="btn btn-primary" style="background-color: rebeccapurple"><i class="nav-icon fas fa-file"> Laporan </i></button>
             </div>
           </div>
-        </form>    
+        </form>
 
-        {{-- Tambah Tugas muncul ketika tombol +Tambah --}} 
+        {{-- Tambah Tugas muncul ketika tombol +Tambah --}}
         <div class="container-fluid"></div>
             <div class="row pt-3 pl-4">
               <!-- left column -->
@@ -65,22 +65,22 @@
                   <select id="inputState" class="form-control">
                       <option selected>Pilih Tanggal</option>
                       {{-- default tanggal hari ini / pakek kalender untuk memilih tanggal sebelumnya --}}
-                  </select>      
-            </div>          
-        </div>       
+                  </select>
+            </div>
+        </div>
 
         <div class="row pt-3 pl-4">
-            <!-- left column -->    
+            <!-- left column -->
             <div class="col-md-2">
                 <select id="inputState" class="form-control">
                     <option selected>Pilih Status</option>
                       <option>SEMUA</option>
                       <option>BELUM</option>
                       <option>SUDAH</option>
-                </select>      
-            </div>  
-            
-          </div>     
+                </select>
+            </div>
+
+          </div>
 
         <!-- Table Daftar Ruangan -->
         <div class="card-body">
@@ -96,16 +96,18 @@
               </tr>
               </thead>
               <tbody>
+              @foreach($jobs as $job)
               <tr>
-                  <td>1</td>
-                  <td>R.1313</td>
-                  <td>zubaeda</td>
-                  <td>SUDAH</td>
-                  <td class="text-center"> 
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$job->nama_ruang}}</td>
+                  <td>{{$job->nama}}</td>
+                  <td>{{$job->status}}</td>
+                  <td class="text-center">
                     <button type="button" class="btn btn-warning mr-2"><i class="nav-icon fas fa-edit"></i></button>
                     <button type="button" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
                   </td>
               </tr>
+                  @endforeach
               </table>
           </div>
         </div>

@@ -1,16 +1,16 @@
-@extends('dashboard_cs')
+@extends('manager.dashboard_manager')
 
 @section('content')
   <!-- Content Header (Page header) -->
   <div class="container-fluid pt-2">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Daftar Ruangan</h3>
+        <h3 class="card-title">Daftar Ruang</h3>
       </div>
-    
+
       {{-- Buttom Tambah --}}
       <form action="" class="pt-3 pl-4">
-            <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button> 
+            <button type="button" class="btn btn-primary"><i class="nav-icon fas fa-plus"> Tambah </i></button>
       </form>
 
       {{-- Tambah Ruangan --}}
@@ -21,14 +21,14 @@
               <!-- general form elements -->
               <div class="card card-dark">
                 <div class="card-header">
-                  <h3 class="card-title">Tambah Ruangan</h3>
+                  <h3 class="card-title">Tambah Ruang</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form role="form">
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputNamaRuangan">Nama Ruangan</label>
+                      <label for="exampleInputNamaRuangan">Nama Ruang</label>
                       <input type="nama" class="form-control" id="exampleInputNamaRuangan" placeholder="Masukkan Nama Ruangan">
                     </div>
                   </div>
@@ -55,14 +55,16 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($rooms as $room)
             <tr>
-                <td>1</td>
-                <td>R.1313</td>
-                <td> 
+                <td>{{$loop->iteration}}</td>
+                <td>{{$room->nama_ruang}}</td>
+                <td>
                   <button type="button" class="btn btn-warning mr-2"><i class="nav-icon fas fa-edit"></i></button>
                   <button type="button" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
                 </td>
             </tr>
+                @endforeach
             </table>
         </div>
       </div>
