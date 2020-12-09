@@ -45,15 +45,6 @@
                         <p> Daftar CS </p>
                     </a>
                 </li>
-
-                <!-- 4  -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-pencil-alt"></i>
-                        <p> Edit Profil </p>
-                    </a>
-                </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
