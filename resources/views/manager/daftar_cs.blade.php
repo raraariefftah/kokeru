@@ -43,10 +43,19 @@
                                 <td>{{$c->email}}</td>
                                 <td>{{$c->no_hp}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning mr-2"><i
-                                            class="nav-icon fas fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>
-                                    </button>
+                                    <form action="{{url('/manager/edit_data_cs/'.$c->id_user)}}" method="get" >
+                                        @csrf
+                                        <button class="btn btn-warning mr-2"><i
+                                                class="nav-icon fas fa-edit"></i></button>
+                                    </form>
+
+                                    <form action="{{url('/manager/delete_data_cs/'.$c->id_user)}}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>
+                                        </button>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach
