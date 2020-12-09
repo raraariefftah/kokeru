@@ -31,24 +31,24 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('content')
-        </div>    
+        </div>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
-         <!-- Control sidebar content goes here -->
-         </aside>
+            <!-- Control sidebar content goes here -->
+        </aside>
         <!-- /.control-sidebar -->
     </div>
-                        <!-- ./wrapper -->
+    <!-- ./wrapper -->
 
-                        <!-- jQuery -->
-                        <script src="{{ asset('/style/plugins/jquery/jquery.min.js')}}"></script>
-                        <!-- Bootstrap 4 -->
-                        <script src="{{ asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-                        <!-- AdminLTE App -->
-                        <script src="{{ asset('/style/dist/js/adminlte.min.js')}}"></script>
-                        <!-- AdminLTE for demo purposes -->
-                        <script src="{{ asset('/style/dist/js/demo.js')}}"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('/style/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('/style/dist/js/adminlte.min.js')}}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('/style/dist/js/demo.js')}}"></script>
 </body>
 
 </html>

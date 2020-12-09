@@ -15,7 +15,8 @@
 {{--                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
 
 {{--                            <div class="col-md-6">--}}
-{{--                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>--}}
+{{--                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+required autocomplete="email" autofocus>--}}
 
 {{--                                @error('email')--}}
 {{--                                    <span class="invalid-feedback" role="alert">--}}
@@ -72,8 +73,9 @@
 {{--</div>--}}
 {{--@endsection--}}
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login KoKeRu</title>
@@ -82,64 +84,65 @@
     <link rel="stylesheet" href="{{asset('/style/dist/css/login.css')}}">
 
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<div class="form">
+    <!-- partial:index.partial.html -->
+    <div class="form">
 
 
-    <div id="login">
-        <h1>Welcome Back!</h1>
+        <div id="login">
+            <h1>KoKeRu</h1>
+            <h3>(Kontrol Kebersihan Ruangan)</h3>
+            <hr>
+            <h4>Silahkan Masuk</h4>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <div class="field-wrap">
-                <label>
-                    Email Address<span class="req">*</span>
-                </label>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                       name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                @enderror
-            </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="field-wrap">
+                    <label>Email Address</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        name="email" value="{{ old('email') }}" required autocomplete="current-email" autofocus>
 
-            <div class="field-wrap">
-                <label>
-                    Password<span class="req">*</span>
-                </label>
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                       name="password" required autocomplete="current-password">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                @enderror
-            </div>
+                <div class="field-wrap">
+                    <label>Password</label>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="current-password" autofocus>
 
-            <p class="forgot">
-                @if (Route::has('password.request'))
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <p class="forgot">
+                    @if (Route::has('password.request'))
                     <a class="btn btn-link" href="{{ route('password.request') }}">
                         {{ __('Forgot Your Password?') }}
                     </a>
-                @endif
-            </p>
+                    @endif
+                </p>
 
-            <button type="submit" class="button button-block">
-                {{ __('Login') }}
-            </button>
+                <button type="submit" class="button button-block">
+                    {{ __('Login') }}
+                </button>
 
-        </form>
+            </form>
 
 
-    </div> <!-- /form -->
-    <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="{{asset('/style/dist/js/login.js')}}"></script>
+        </div> <!-- /form -->
+        <!-- partial -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src="{{asset('/style/dist/js/login.js')}}"></script>
 
 </body>
-</html>
 
+</html>
