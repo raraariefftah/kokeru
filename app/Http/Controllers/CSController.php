@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CSController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $cs = DB::table('users')
@@ -21,25 +17,30 @@ class CSController extends Controller
         return view('manager.daftar_cs', ['cs' => $cs]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('manager.tambah_data_cs');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+//        $request->validate([
+//            'nama' => 'required',
+//            'email' => 'required|email',
+//            'no_hp' => 'required|alpha_num'
+//        ]);
+
+        DB::table('users')->insert([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'no_hp' => $request->no_hp,
+                'password' => Hash::make($request->email),
+                'role' => 'cs',
+                ]
+        );
+
+        return redirect()->route('daftar_cs')
+            ->with('success','Data CS berhasil ditambahkan.');
     }
 
     /**
