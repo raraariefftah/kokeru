@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ruang;
 use App\Tugas;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,7 @@ class ManagerController extends Controller
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->get();
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
         $jumlahcs = User::where('role', 'cs')->count();
         $jumlahruang = Ruang::all()->count();
@@ -29,7 +31,7 @@ class ManagerController extends Controller
         $tugasselesai = Tugas::where('status', 'SUDAH')->count();
 
         if(Auth::user()->role=='manager'){
-            return view('manager.dashboard', compact('jobs', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
+            return view('manager.dashboard', compact('jobs', 'waktu', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
         }
         else{
             return abort(404);

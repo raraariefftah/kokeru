@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tugas;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,8 @@ class TugasController extends Controller
     {
         $id = Auth::user()->id_user;
 
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
         if(Auth::user()->role=='cs'){
             $cs_jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
@@ -58,7 +61,7 @@ class TugasController extends Controller
             ->where('tugas.id_user', '=', $id)
             ->get();
 
-            return view('/cs/dashboard_cs', compact('cs_jobs'));
+            return view('/cs/dashboard_cs', compact('cs_jobs', 'waktu'));
         }
         else{
             return abort(404);
