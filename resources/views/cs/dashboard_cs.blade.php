@@ -27,7 +27,7 @@
         <section id="awal" class="awal">
             <div class="container">
                 <div class="row mb-4 pt-2">
-                    <div class="col text-center" style="color :rgb(63, 112, 206);" ">
+                    <div class="col text-center" style="color :rgb(63, 112, 206);" >
                         <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
                         <h4>Gedung Bersama Maju</h4>
                         <h4 class="pt-3">{{$waktu}} WIB</h4>

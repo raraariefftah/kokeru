@@ -108,4 +108,37 @@ class CSController extends Controller
         return redirect()->route('daftar_cs')
             ->with('success', 'Data CS berhasil dihapus.');
     }
+
+    public function edit_profil($id)
+    {
+//        $cs = DB::table('users')
+//            ->where('id_user', '=', $id)
+//            ->first();
+//        dd($cs);
+        $cs = User::find($id);
+
+        return view('cs.edit_profil', compact('cs'));
+    }
+
+    public function update_profil(Request $request, $id)
+    {
+//        DB::table('users')->where('id_user', '=', $id)
+//            ->update([
+//                    'nama' => $request->nama,
+//                    'email' => $request->email,
+//                    'no_hp' => $request->no_hp,
+//                ]
+//            );
+        $cs = User::find($id);
+        $cs->update([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'no_hp' => $request->no_hp,
+            ]
+        );
+
+//        return redirect()->route('daftar_cs')
+        return back()
+            ->with('success', 'Data Anda berhasil diubah.');
+    }
 }
