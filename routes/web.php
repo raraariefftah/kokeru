@@ -31,6 +31,7 @@ Route::get('/manager/edit_ruang/{id}', 'RuangController@edit')->name('edit_ruang
 Route::patch('/manager/update_data_cs/{id}', 'CSController@update');
 Route::patch('/manager/update_ruang/{id}', 'RuangController@update');
 Route::delete('manager/delete_data_cs/{id}', 'CSController@destroy');
+Route::delete('manager/delete_ruang/{id}', 'RuangController@destroy');
 
 // Route::get('/dashboard_manager/daftar_tugas/laporan/pdf_laporan', function () {
 //     return view('/manajer/pdf_laporan');

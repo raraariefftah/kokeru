@@ -96,6 +96,9 @@ class RuangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ruang = Ruang::where('id_ruang',$id);
+        $ruang->delete();
+        return redirect()->route('daftar_ruang')
+            ->with('success', 'Ruang berhasil dihapus.');
     }
 }
