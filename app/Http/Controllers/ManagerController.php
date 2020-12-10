@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Ruang;
+use App\Tugas;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ManagerController extends Controller
 {
@@ -13,7 +18,22 @@ class ManagerController extends Controller
 
     public function index()
     {
+        $jobs = DB::table('tugas')
+            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+            ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->get();
 
+        $jumlahcs = User::where('role', 'cs')->count();
+        $jumlahruang = Ruang::all()->count();
+        $jumlahtugas = Tugas::all()->count();
+        $tugasselesai = Tugas::where('status', 'SUDAH')->count();
+
+        if(Auth::user()->role=='manager'){
+            return view('manager.dashboard', compact('jobs', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     public function create()

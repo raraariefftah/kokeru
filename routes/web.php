@@ -18,7 +18,7 @@ Route::get('/', 'TugasController@index');
 
 Route::get('/customer_service', 'TugasController@show');
 
-Route::get('/manager', 'TugasController@daftarTugas')->name('dashboard_manager');
+Route::get('/manager', 'ManagerController@index')->name('dashboard_manager');
 Route::get('/manager/daftar_ruang', 'RuangController@index')->name('daftar_ruang');
 Route::get('/manager/daftar_cs', 'CSController@index')->name('daftar_cs');
 Route::get('/manager/tambah_data_cs', 'CSController@create')->name('tambah_data_cs');
