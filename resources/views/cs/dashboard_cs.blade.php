@@ -35,9 +35,9 @@
                 </div>
 
 
-                {{-- <!-- row -->
+                 <!-- row -->
                 <div class=" row">
-                        @foreach ($jobs as $job)
+                        @foreach ($cs_jobs as $job)
                             <div class="col-lg-3 col-6">
                                 <!-- small card -->
                                 <div
@@ -53,7 +53,7 @@
                         @endforeach
                     </div>
                 </div>
-                <!-- /.container --> --}}
+                <!-- /.container -->
         </section>
     </div>
     <!-- ./wrapper -->
