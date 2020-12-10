@@ -85,6 +85,10 @@
         <section id="awal" class="awal">
             <div class="row">
                 <div class="col-auto ml-auto mb-5">
+                    <a type="button" class="btn btn-primary" href="#"><i class="nav-icon fas fa-plus">
+                            Tambah </i></a>
+                </div>
+                <div class="col-auto mb-5">
                     <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="#"><i class="nav-icon fas fa-plus">
                             Laporan </i></a>
                 </div>

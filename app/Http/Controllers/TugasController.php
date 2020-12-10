@@ -46,15 +46,18 @@ class TugasController extends Controller
     {
         $id = Auth::user()->id_user;
 
-//        $cs_jobs = Tugas::;
-//        dd($cs_jobs);
-        $cs_jobs = DB::table('tugas')
+        if(Auth::user()->role=='cs'){
+            $cs_jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->where('tugas.id_user', '=', $id)
             ->get();
 
-        return view('/cs/dashboard_cs', compact('cs_jobs'));
+            return view('/cs/dashboard_cs', compact('cs_jobs'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     public function edit($id)
@@ -79,6 +82,11 @@ class TugasController extends Controller
             ->get();
 
 //        var_dump($tugas);
-        return view('manager.dashboard', compact('jobs'));
+        if(Auth::user()->role=='manager'){
+            return view('manager.dashboard', compact('jobs'));
+        }
+        else{
+            return abort(404);
+        }
     }
 }
