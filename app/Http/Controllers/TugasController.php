@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class TugasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+    
     public function index()
     {
         $jobs = DB::table('tugas')
