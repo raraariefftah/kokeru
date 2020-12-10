@@ -43,7 +43,7 @@ class RuangController extends Controller
         ]);
 
         return redirect()->route('daftar_ruang')
-            ->with('success', 'Ruang berhasil ditambahkan.');
+            ->with('success', 'Ruang berhasil ditambahkan!');
     }
 
     /**
