@@ -16,26 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'TugasController@index');
 
-Route::get('/pop', function () {
-    return view('pop');
-});
+Route::get('/customer_service', 'TugasController@show');
 
-Route::get('/customer_service', function () {
-    return view('/cs/dashboard_cs');
-});
-
-Route::get('/manager', function () {
-    return view('/manager/dashboard');
-});
-
-Route::get('/manager/daftar_tugas', 'TugasController@daftarTugas');
-Route::get('/manager/daftar_ruang', 'RuangController@index');
+Route::get('/manager', 'TugasController@daftarTugas')->name('dashboard_manager');
+Route::get('/manager/daftar_ruang', 'RuangController@index')->name('daftar_ruang');
 Route::get('/manager/daftar_cs', 'CSController@index')->name('daftar_cs');
 Route::get('/manager/tambah_data_cs', 'CSController@create')->name('tambah_data_cs');
+Route::get('/manager/tambah_ruang', 'RuangController@create')->name('tambah_ruang');
 Route::post('/manager/store_data_cs', 'CSController@store')->name('cs_store');
+Route::post('/manager/store_data_ruang', 'RuangController@store')->name('ruang_store');
 Route::get('/manager/edit_data_cs/{id}', 'CSController@edit')->name('edit_data_cs');
+Route::get('/manager/edit_ruang/{id}', 'RuangController@edit')->name('edit_ruang');
 Route::patch('/manager/update_data_cs/{id}', 'CSController@update');
+Route::patch('/manager/update_ruang/{id}', 'RuangController@update');
 Route::delete('manager/delete_data_cs/{id}', 'CSController@destroy');
+Route::delete('manager/delete_ruang/{id}', 'RuangController@destroy');
 
 // Route::get('/dashboard_manager/daftar_tugas/laporan/pdf_laporan', function () {
 //     return view('/manajer/pdf_laporan');

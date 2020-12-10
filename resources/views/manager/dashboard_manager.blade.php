@@ -22,7 +22,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        @include('partials.navbar_manajer')
+        @include('partials.navbar_manager')
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->

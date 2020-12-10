@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -10,11 +11,13 @@ class CSController extends Controller
 {
     public function index()
     {
-        $cs = DB::table('users')
-            ->where('role', '=', 'cs')
-            ->get();
+//        $cs = DB::table('users')
+//            ->where('role', '=', 'cs')
+//            ->get();
+        $cs = User::where('role', 'cs')->get();
 
-        return view('manager.daftar_cs', ['cs' => $cs]);
+
+        return view('manager.daftar_cs', compact('cs'));
     }
 
     public function create()
@@ -31,16 +34,24 @@ class CSController extends Controller
 //        ]);
 
         DB::table('users')->insert([
-                'nama' => $request->nama,
-                'email' => $request->email,
-                'no_hp' => $request->no_hp,
-                'password' => Hash::make($request->email),
-                'role' => 'cs',
-                ]
-        );
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'password' => Hash::make($request->email),
+            'role' => 'cs',
+        ]);
+
+//        $cs = User::make([
+//            'nama' => $request->nama,
+//            'email' => $request->email,
+//            'no_hp' => $request->no_hp,
+//            'password' => Hash::make($request->email),
+//            'role' => 'cs',
+//        ]);
+//        $cs->save();
 
         return redirect()->route('daftar_cs')
-            ->with('success','Data CS berhasil ditambahkan.');
+            ->with('success', 'Data CS berhasil ditambahkan.');
     }
 
     public function show($id)
@@ -50,18 +61,26 @@ class CSController extends Controller
 
     public function edit($id)
     {
-        $cs = DB::table('users')
-            ->where('id_user', '=', $id)
-            ->first();
+//        $cs = DB::table('users')
+//            ->where('id_user', '=', $id)
+//            ->first();
 //        dd($cs);
+        $cs = User::find($id);
 
         return view('manager.edit_data_cs', compact('cs'));
     }
 
     public function update(Request $request, $id)
     {
-        DB::table('users')->where('id_user', '=', $id)
-            ->update([
+//        DB::table('users')->where('id_user', '=', $id)
+//            ->update([
+//                    'nama' => $request->nama,
+//                    'email' => $request->email,
+//                    'no_hp' => $request->no_hp,
+//                ]
+//            );
+        $cs = User::find($id);
+        $cs->update([
                 'nama' => $request->nama,
                 'email' => $request->email,
                 'no_hp' => $request->no_hp,
@@ -69,20 +88,17 @@ class CSController extends Controller
         );
 
         return redirect()->route('daftar_cs')
-            ->with('success','Data CS berhasil diubah.');
+            ->with('success', 'Data CS berhasil diubah.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        DB::table('users')->where('id_user', '=', $id)->delete();
+//        DB::table('users')->where('id_user', '=', $id)->delete();
+
+        $cs = User::find($id);
+        $cs->delete();
 
         return redirect()->route('daftar_cs')
-            ->with('success','Data CS berhasil dihapus.');
+            ->with('success', 'Data CS berhasil dihapus.');
     }
 }
