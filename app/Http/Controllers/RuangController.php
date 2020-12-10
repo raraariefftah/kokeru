@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ruang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -64,7 +65,9 @@ class RuangController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ruang = Ruang::find($id);
+
+        return view('manager.edit_ruang', compact('ruang'));
     }
 
     /**
@@ -76,7 +79,13 @@ class RuangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ruang = Ruang::find($id);
+        $ruang->update([
+                'nama_ruang' => $request->nama,
+            ]
+        );
+        return redirect()->route('daftar_ruang')
+            ->with('success', 'Ruang berhasil diubah.');
     }
 
     /**

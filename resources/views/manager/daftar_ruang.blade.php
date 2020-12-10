@@ -32,8 +32,11 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$room->nama_ruang}}</td>
                 <td>
-                  <button type="button" class="btn btn-warning mr-2"><i class="nav-icon fas fa-edit"></i></button>
-                  <button type="button" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
+                    <form action="{{url('/manager/edit_ruang/'.$room->id_ruang)}}" method="get" >
+                        @csrf
+                        <button class="btn btn-warning mr-2"><i
+                                class="nav-icon fas fa-edit"></i></button>
+                    </form>
                 </td>
             </tr>
                 @endforeach
