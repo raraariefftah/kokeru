@@ -11,6 +11,10 @@
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
+            @elseif(session('failed'))
+                <div class="alert alert-danger">
+                    {{ session('failed') }}
+                </div>
             @endif
             <div class="card card-dark">
                 <div class="card-header">
@@ -25,17 +29,21 @@
                         <div class="form-group">
                             <label for="exampleInputNama">Nama</label>
                             <input name="nama" class="form-control"
-                                   placeholder="Masukkan Nama CS" value="{{$manager->nama}}">
+                                   placeholder="Masukkan Nama CS" value="{{old('nama') ?? $manager->nama}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail">Email</label>
                             <input name="email" class="form-control" placeholder="Masukkan Email"
-                                   value="{{$manager->email}}">
+                                   value="{{old('email') ?? $manager->email}}">
                         </div>
                         <div class=" form-group">
                             <label for="exampleInputNoHp">No Hp</label>
                             <input name="no_hp" class="form-control" placeholder="Masukkan No Hp"
-                                   value="{{$manager->no_hp}}">
+                                   value="{{old('no_hp') ?? $manager->no_hp}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputNama">Masukkan password</label>
+                            <input name="password" type="password" class="form-control">
                         </div>
                     </div>
                     <!-- /.card-body -->

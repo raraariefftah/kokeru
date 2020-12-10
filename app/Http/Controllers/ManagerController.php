@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
 {
@@ -63,16 +64,21 @@ class ManagerController extends Controller
     public function update(Request $request, $id)
     {
         $manager = User::find($id);
-        $manager->update([
-                'nama' => $request->nama,
-                'email' => $request->email,
-                'no_hp' => $request->no_hp,
-            ]
-        );
+        $inputpass = Hash::check($request->password, $manager->password);
+        if ($inputpass) {
+            $manager->update([
+                    'nama' => $request->nama,
+                    'email' => $request->email,
+                    'no_hp' => $request->no_hp,
+                ]
+            );
 
-//        return redirect()->route('dashboard_manager')
-        return back()
-            ->with('success', 'Data CS berhasil diubah.');
+            return back()
+                ->with('success', 'Data Anda berhasil diubah.');
+        } else{
+            return back()
+                ->with('failed', 'Password yang Anda masukkan salah.')->withInput();
+        }
     }
 
     public function destroy($id)
