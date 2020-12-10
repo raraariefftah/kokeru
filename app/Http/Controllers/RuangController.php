@@ -26,7 +26,7 @@ class RuangController extends Controller
      */
     public function create()
     {
-        //
+        return view('manager.tambah_ruang');
     }
 
     /**
@@ -37,7 +37,12 @@ class RuangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('ruang')->insert([
+            'nama_ruang' => $request->nama,
+        ]);
+
+        return redirect()->route('daftar_ruang')
+            ->with('success', 'Ruang berhasil ditambahkan.');
     }
 
     /**
