@@ -31,6 +31,8 @@ Route::patch('/manager/update_data_cs/{id}', 'CSController@update');
 Route::patch('/manager/update_ruang/{id}', 'RuangController@update');
 Route::delete('manager/delete_data_cs/{id}', 'CSController@destroy');
 Route::delete('manager/delete_ruang/{id}', 'RuangController@destroy');
+Route::get('/manager/edit_profil/{id}', 'ManagerController@edit');
+Route::patch('/manager/update_profil/{id}', 'ManagerController@update');
 
 // Route::get('/dashboard_manager/daftar_tugas/laporan/pdf_laporan', function () {
 //     return view('/manajer/pdf_laporan');

@@ -55,12 +55,24 @@ class ManagerController extends Controller
 
     public function edit($id)
     {
-        //
+        $manager = User::find($id);
+
+        return view('manager.edit_profil', compact('manager'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $manager = User::find($id);
+        $manager->update([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'no_hp' => $request->no_hp,
+            ]
+        );
+
+//        return redirect()->route('dashboard_manager')
+        return back()
+            ->with('success', 'Data CS berhasil diubah.');
     }
 
     public function destroy($id)
