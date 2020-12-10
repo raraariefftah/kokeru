@@ -1,36 +1,79 @@
-@extends('dashboard_cs')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard CS</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-6">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Edit Profil</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputnama">Nama</label>
-                    <input type="nama" class="form-control" id="exampleInputnama" placeholder="Enter nama">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('/style/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('/style/dist/css/adminlte.min.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body style="background-color: rgba(152, 207, 255, 0.2);">
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!-- Navbar -->
+@include('partials.navbar_cs')
+<!-- /.navbar -->
+    <div class="row justify-content-md-center">
+        <!-- left column -->
+        <div class="col-md-6">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+        @endif
+        <!-- general form elements -->
+            <div class="card card-primary ">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Profil</h3>
                 </div>
-              </form>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" action="{{url('/customer_service/update_profil/'.Auth::user()->id_user)}}"
+                      method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputNama">Nama</label>
+                            <input name="nama" class="form-control" value="{{$cs->nama}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Email</label>
+                            <input name="email" class="form-control"
+                                   value="{{$cs->email}}">
+                        </div>
+                        <div class=" form-group">
+                            <label for="exampleInputNoHp">No Hp</label>
+                            <input name="no_hp" class="form-control"
+                                   value="{{$cs->no_hp}}">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class=" card-footer">
+                        <button type="submit" class="btn btn-success mr-2">Ubah</button>
+                    </div>
+                </form>
             </div>
             <!-- /.card -->
-@endsection
+        </div>
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="{{ asset('/style/plugins/jquery/jquery.min.js') }}"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{{ asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('/style/dist/js/adminlte.min.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{ asset('/style/dist/js/demo.js') }}"></script>
+</body>
+
+</html>
