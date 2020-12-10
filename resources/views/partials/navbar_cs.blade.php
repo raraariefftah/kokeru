@@ -1,7 +1,7 @@
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <div>
-        <h1 class="h4 mb-2 text-gray-600">Dashboard Custumer Service</h1>
+        <h1 class="h4 mb-2 text-gray-600">Dashboard Customer Service</h1>
     </div>
     <ul class="navbar-nav ml-auto">
         <!-- Nav Item - User Information -->
