@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light topbar mb-4 static-top shadow">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light topbar mb-2 static-top shadow">
     
     <!-- Left navbar links -->
     <ul class="navbar-nav">
