@@ -122,23 +122,21 @@ class CSController extends Controller
 
     public function update_profil(Request $request, $id)
     {
-//        DB::table('users')->where('id_user', '=', $id)
-//            ->update([
-//                    'nama' => $request->nama,
-//                    'email' => $request->email,
-//                    'no_hp' => $request->no_hp,
-//                ]
-//            );
         $cs = User::find($id);
-        $cs->update([
-                'nama' => $request->nama,
-                'email' => $request->email,
-                'no_hp' => $request->no_hp,
-            ]
-        );
+        $inputpass = Hash::check($request->password, $cs->password);
+        if ($inputpass)
+        {
+            $cs->update([
+                    'email' => $request->email,
+                    'no_hp' => $request->no_hp,
+                ]
+            );
 
-//        return redirect()->route('daftar_cs')
-        return back()
-            ->with('success', 'Data Anda berhasil diubah.');
+            return back()
+                ->with('success', 'Data Anda berhasil diubah.');
+        } else {
+            return back()
+                ->with('failed', 'Password yang Anda masukkan salah.')->withInput();
+        }
     }
 }

@@ -29,7 +29,11 @@
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
-        @endif
+        @elseif(session('failed'))
+                <div class="alert alert-danger">
+                    {{ session('failed') }}
+                </div>
+            @endif
         <!-- general form elements -->
             <div class="card card-primary ">
                 <div class="card-header">
@@ -43,18 +47,18 @@
                     @method('patch')
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputNama">Nama</label>
-                            <input name="nama" class="form-control" value="{{$cs->nama}}">
-                        </div>
-                        <div class="form-group">
                             <label for="exampleInputEmail">Email</label>
                             <input name="email" class="form-control"
-                                   value="{{$cs->email}}">
+                                   value="{{old('email') ?? $cs->email}}">
                         </div>
                         <div class=" form-group">
                             <label for="exampleInputNoHp">No Hp</label>
                             <input name="no_hp" class="form-control"
-                                   value="{{$cs->no_hp}}">
+                                   value="{{old('no_hp') ?? $cs->no_hp}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputNama">Masukkan password</label>
+                            <input name="password" type="password" class="form-control">
                         </div>
                     </div>
                     <!-- /.card-body -->
