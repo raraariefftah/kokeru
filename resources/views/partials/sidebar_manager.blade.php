@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgb(49, 70, 141)">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgb(109, 57, 143)">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="{{ asset('/style/dist/img/AdminLTELogo.png')}}"
