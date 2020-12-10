@@ -1,8 +1,16 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light topbar mb-4 static-top shadow">
     <div>
         <h1 class="h4 mb-2 text-gray-600">Dashboard Customer Service</h1>
     </div>
+
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+
     <ul class="navbar-nav ml-auto">
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
