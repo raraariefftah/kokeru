@@ -79,6 +79,6 @@ class TugasController extends Controller
             ->get();
 
 //        var_dump($tugas);
-        return view('manager.daftar_tugas', compact('jobs'));
+        return view('manager.dashboard', compact('jobs'));
     }
 }

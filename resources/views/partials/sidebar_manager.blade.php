@@ -24,21 +24,13 @@
 
                 <!-- 2  -->
                 <li class="nav-item">
-                    <a href="/manager/daftar_tugas" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p> Daftar Tugas </p>
-                    </a>
-                </li>
-
-                <!-- 3  -->
-                <li class="nav-item">
                     <a href="/manager/daftar_ruang" class="nav-link">
                         <i class="nav-icon fas fa-map-marker-alt"></i>
                         <p> Daftar Ruangan </p>
                     </a>
                 </li>
 
-                <!-- 4  -->
+                <!-- 3  -->
                 <li class="nav-item">
                     <a href="/manager/daftar_cs" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>

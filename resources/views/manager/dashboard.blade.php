@@ -83,18 +83,16 @@
             </div>
         </div>
         <section id="awal" class="awal">
-            <div class="container">
-                <div class="row mb-4 pt-4">
-                    <div class="col text-center" style="color :rgb(63, 112, 206);" ">
-                        <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
-                        <h4>Gedung Bersama Maju</h4><br>
-                        <h4>Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h4>
-                    </div>
+            <div class="row">
+                <div class="col-auto ml-auto mb-5">
+                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="#"><i class="nav-icon fas fa-plus">
+                            Laporan </i></a>
                 </div>
-
+            </div>
+            <div class="container">
 
                 <!-- row -->
-                {{-- <div class=" row">
+                <div class=" row">
                     @foreach ($jobs as $job)
                         <div class="col-lg-3 col-6">
                             <!-- small card -->
@@ -111,6 +109,6 @@
                 </div>
             </div>
         <!-- /.container -->
-        </section> --}}
+        </section>
     </div>
 @endsection
