@@ -1,13 +1,13 @@
 <!-- Topbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light topbar mb-2 static-top shadow">
-    
+
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
     </ul>
-    
+
     <ul class="navbar-nav ml-auto">
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -17,7 +17,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{url('/manager/edit_profil/'.Auth::user()->id_user)}}">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Profile
                     </a>
