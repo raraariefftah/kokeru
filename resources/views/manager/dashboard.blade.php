@@ -107,9 +107,10 @@
                         <h4>Gedung Bersama Maju</h4>
                         <h4 class="pt-3">Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h4>
                     </div>
-                    <!-- row -->
-                    <div class=" row">
-                        @foreach ($jobs as $job)
+                </div>
+                <!-- row -->
+                <div class=" row">
+                    @foreach ($jobs as $job)
                         <div class="col-lg-3 col-6">
                             <!-- small card -->
                             <div
@@ -122,8 +123,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-                    </div>
+                    @endforeach
                 </div>
                 <!-- /.container -->
             </div>
