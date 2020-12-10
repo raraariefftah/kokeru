@@ -23,8 +23,10 @@ class TugasController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->get();
 
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
 //        var_dump($tugas);
-        return view('awal', compact('jobs'));
+        return view('awal', compact('jobs', 'waktu'));
     }
 
     /**
