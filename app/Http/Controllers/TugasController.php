@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tugas;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,7 @@ class TugasController extends Controller
     {
         $this->middleware('auth')->except(['index']);
     }
-    
+
     public function index()
     {
         $jobs = DB::table('tugas')
@@ -51,6 +52,8 @@ class TugasController extends Controller
     {
         $id = Auth::user()->id_user;
 
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
         if(Auth::user()->role=='cs'){
             $cs_jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
@@ -58,7 +61,7 @@ class TugasController extends Controller
             ->where('tugas.id_user', '=', $id)
             ->get();
 
-            return view('/cs/dashboard_cs', compact('cs_jobs'));
+            return view('/cs/dashboard_cs', compact('cs_jobs', 'waktu'));
         }
         else{
             return abort(404);
@@ -80,18 +83,4 @@ class TugasController extends Controller
         //
     }
 
-    public function daftarTugas(){
-        $jobs = DB::table('tugas')
-            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-            ->join('users', 'tugas.id_user', '=', 'users.id_user')
-            ->get();
-
-//        var_dump($tugas);
-        if(Auth::user()->role=='manager'){
-            return view('manager.dashboard', compact('jobs'));
-        }
-        else{
-            return abort(404);
-        }
-    }
 }

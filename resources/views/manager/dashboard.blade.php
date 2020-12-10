@@ -11,7 +11,7 @@
                     <div class="row no-gutters align-items-center ">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah CS</div>
-                            <div class="h5 mb-0 font-weight-bold text-white">4</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{$jumlahcs}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-white"></i>
@@ -28,7 +28,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Ruang</div>
-                            <div class="h5 mb-0 font-weight-bold text-white">10</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{$jumlahruang}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-home fa-2x text-white"></i>
@@ -45,7 +45,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Tugas</div>
-                            <div class="h5 mb-0 font-weight-bold text-white">10</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{$jumlahtugas}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-white"></i>
@@ -64,11 +64,11 @@
                             <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Tugas Selesai</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-dark">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-dark">{{($tugasselesai/$jumlahtugas)*100}}%</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 50%"
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: {{($tugasselesai/$jumlahtugas)*100}}%"
                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                     <div class="col text-center" style="color :rgb(63, 112, 206);">
                         <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
                         <h4>Gedung Bersama Maju</h4>
-                        <h4 class="pt-3">Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h4>
+                        <h4 class="pt-3">{{$waktu}} WIB</h4>
                     </div>
                 </div>
                 <!-- row -->
