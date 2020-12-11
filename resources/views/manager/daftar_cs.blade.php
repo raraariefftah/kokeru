@@ -52,12 +52,21 @@
                                                     class="nav-icon fas fa-edit"></i></button>
                                         </form>
                                     </div>
-                                    <div class="col-sm-2 ml-2">
+                                    <div class="col-sm-2 ml-2 mr-3">
                                         <form action="{{url('/manager/delete_data_cs/'.$c->id_user)}}" method="post"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2 ml-2">
+                                        <form action="{{url('/manager/reset_password_cs/'.$c->id_user)}}" method="post"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin reset password CS {{$c->nama}}?')">
+                                            @method('patch')
+                                            @csrf
+                                            <button class="btn btn-info"><i class="nav-icon fas fa-refresh"></i>
                                             </button>
                                         </form>
                                     </div>

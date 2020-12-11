@@ -113,4 +113,16 @@ class ManagerController extends Controller
                 ->with('failed', 'Konfirmasi password salah, silahkan ulangi.')->withInput();
         }
     }
+
+    public function resetPasswordCS($id)
+    {
+        $cs = User::find($id);
+        $cs->update([
+                'password' => Hash::make($cs->email),
+            ]
+        );
+
+        return redirect()->route('daftar_cs')
+            ->with('success', 'Password CS berhasil diubah.');
+    }
 }
