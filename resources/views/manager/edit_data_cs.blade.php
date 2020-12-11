@@ -4,7 +4,7 @@
 
     {{-- Tambah Ruangan --}}
     <div class="container-fluid"></div>
-    <div class="row pt-3 pl-4">
+    <div class="row pt-3 pl-4 justify-content-md-center">
         <!-- left column -->
         <div class="col-md-6">
             <!-- general form elements -->
@@ -35,7 +35,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-success mr-2">Ubah</button>
-                        <button type="submit" class="btn btn-danger">Cancel</button>
+                        <a href="{{route('daftar_cs')}}" class="btn btn-danger">Cancel</a>
                     </div>
                 </form>
             </div>

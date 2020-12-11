@@ -85,4 +85,32 @@ class ManagerController extends Controller
     {
         //
     }
+
+    public function ubahPassword($id)
+    {
+        $manager = User::find($id);
+
+        return view('manager.ubah_password', compact('manager'));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $manager = User::find($id);
+        $truepassword = Hash::check($request->password, $manager->password);
+        if (($request->newpassword == $request->confirmnewpassword) && $truepassword) {
+            $manager->update([
+                    'password' => Hash::make($request->newpassword),
+                ]
+            );
+
+            return back()
+                ->with('success', 'Password berhasil diubah.');
+        } elseif (!$truepassword){
+            return back()
+                ->with('failed', 'Password yang Anda masukkan salah.')->withInput();
+        } else {
+            return back()
+                ->with('failed', 'Konfirmasi password salah, silahkan ulangi.')->withInput();
+        }
+    }
 }

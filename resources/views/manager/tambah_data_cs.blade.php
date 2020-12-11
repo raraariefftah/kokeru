@@ -4,7 +4,7 @@
 
     {{-- Tambah Ruangan --}}
     <div class="container-fluid"></div>
-    <div class="row pt-3 pl-4">
+    <div class="row pt-3 pl-4 justify-content-md-center">
         <!-- left column -->
         <div class="col-md-6">
             <!-- general form elements -->
@@ -16,25 +16,25 @@
                 <!-- form start -->
                 <form role="form" action="{{ route('cs_store') }}" method="post">
                     @csrf
-                    <div class="card-body">
-                        <div class="form-group">
+                    <div class="card-body justify-content-md-center">
+                        <div class="form-group row">
                             <label for="exampleInputNama">Nama CS</label>
                             <input name="nama" class="form-control"
                                    placeholder="Masukkan Nama CS">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label for="exampleInputEmail">Email</label>
                             <input name="email" class="form-control"  placeholder="Masukkan Email">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label for="exampleInputNoHp">No Hp</label>
                             <input name="no_hp" class="form-control"  placeholder="Masukkan No Hp">
                         </div>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
+                    <div class="card-footer row">
                         <button type="submit" class="btn btn-success mr-2">Tambah</button>
-                        <button type="submit" class="btn btn-danger">Cancel</button>
+                        <a href="{{route('daftar_cs')}}" class="btn btn-danger">Cancel</a>
                     </div>
                 </form>
             </div>
