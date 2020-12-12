@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('no_hp');
-            $table->enum('role', ['admin', 'cs', 'manager']);
+            $table->enum('role', ['cs', 'manager']);
             $table->timestamps();
         });
     }

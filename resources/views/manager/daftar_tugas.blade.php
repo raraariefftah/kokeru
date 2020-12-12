@@ -31,32 +31,7 @@
                         <h3 class="card-title">Tambah Tugas</h3>
                     </div>
                     <!-- /.card-header -->
-                    <!-- form start -->
-                    <form role="form">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputRuangan">Ruang</label>
-                                <input type="nama" class="form-control" id="exampleInputRuangan"
-                                    placeholder="Masukkan Nama Ruangan">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputNama">Nama CS</label>
-                                <input type="nama" class="form-control" id="exampleInputNama"
-                                    placeholder="Masukkan Nama Ruangan">
-                            </div>
-                            <label for="inputState">Status</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Pilih..</option>
-                                <option>BELUM</option>
-                                <option>SUDAH</option>
-                            </select>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success mr-2">Tambah</button>
-                            <button type="submit" class="btn btn-danger">Cancel</button>
-                        </div>
-                    </form>
+
                 </div>
             </div>
         </div>

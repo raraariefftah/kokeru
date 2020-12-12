@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Ruang;
 use App\Tugas;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class TugasController extends Controller
 {
@@ -21,6 +23,7 @@ class TugasController extends Controller
         $jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
 
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
@@ -29,25 +32,35 @@ class TugasController extends Controller
         return view('awal', compact('jobs', 'waktu'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $cs = User::where('role', 'cs')->get();
+//        $rooms = DB::table('ruang')
+//            ->whereNotIn('id_ruang', DB::table('tugas')->select('id_ruang')->get())
+//            ->get();
+        $rooms = Ruang::whereNotIn('id_ruang', Tugas::select('id_ruang')->get())->get();
+//        dd($cs, $rooms);
+
+        return view('manager.tambah_tugas', compact('cs', 'rooms'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+//        dd($request->nama_cs, $request->ruang, $request->status);
+        $cs = User::where('nama', $request->nama_cs)->first();
+        $ruang = Ruang::where('nama_ruang', $request->ruang)->first();
+        $iduser = $cs['id_user'];
+        $idruang = $ruang['id_ruang'];
+//        dd($iduser, $idruang);
+        DB::table('tugas')->insert([
+            'id_user' => $iduser,
+            'id_ruang' => $idruang,
+            'status' => $request->status,
+            'tanggal_penugasan' => Carbon::now(),
+        ]);
+
+        return redirect()->route('dashboard_manager')
+            ->with('success', 'Data tugas berhasil ditambahkan.');
     }
 
     public function show()

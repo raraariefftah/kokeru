@@ -91,7 +91,7 @@
                                 Reset </i></a>
                     </div>
                     <div class="col-auto">
-                        <a type="button" class="btn btn-primary" href="#"><i class="nav-icon fas fa-plus">
+                        <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i class="nav-icon fas fa-plus">
                                 Tambah </i></a>
                     </div>
                     <div class="col-auto">
