@@ -46,6 +46,8 @@ class CSController extends Controller
             'no_hp' => $request->no_hp,
             'password' => Hash::make($request->email),
             'role' => 'cs',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
 //        $cs = User::make([

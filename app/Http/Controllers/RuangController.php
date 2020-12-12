@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ruang;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,6 +30,8 @@ class RuangController extends Controller
     {
         DB::table('ruang')->insert([
             'nama_ruang' => $request->nama,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         return redirect()->route('daftar_ruang')

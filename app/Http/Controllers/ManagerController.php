@@ -23,6 +23,7 @@ class ManagerController extends Controller
         $jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
