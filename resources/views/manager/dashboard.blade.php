@@ -1,9 +1,9 @@
 @extends('manager.dashboard_manager')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid pt-2">
     <!-- Content Row -->
-    <div class="row mt-3">
+    <div class="row">
         <!-- Jumlah CS -->
         <div class="col-xl-3 col-md-6 mb-4 ">
             <div class="card border-left-primary shadow h-100 py-2" style="background-color: rgb(49, 26, 56)">
@@ -64,14 +64,12 @@
                             <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Tugas Selesai</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-dark">
-                                        {{($tugasselesai/$jumlahtugas)*100}}%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-dark">{{($tugasselesai/$jumlahtugas)*100}}%</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-dark" role="progressbar"
-                                            style="width: {{($tugasselesai/$jumlahtugas)*100}}%" aria-valuenow="50"
-                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: {{($tugasselesai/$jumlahtugas)*100}}%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -88,17 +86,21 @@
     <div class="container-fluid">
             <div class="row pt-3 pr-3">
                 <div class="col-auto ml-auto">
-                    <a type="button" class="btn btn-warning" style="background-color: rgb(255, 153, 0)" href="#"><i
-                            class="nav-icon fas fa-undo">
-                            Reset </i></a>
+                    <form action="{{ url('/reset_tugas') }}"
+                          method="post"
+                          onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
+                        @method('patch')
+                        @csrf
+                        <button class="btn btn-warning"><i class="nav-icon fas fa-undo">
+                                Reset </i></button>
+                    </form>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i
-                            class="nav-icon fas fa-plus">
+                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i class="nav-icon fas fa-plus">
                             Tambah </i></a>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="#"><i
+                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="{{url('manager/laporan')}}"><i
                             class="nav-icon fas fa-file">
                             Laporan </i></a>
                 </div>

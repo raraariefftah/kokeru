@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\PDF;
 
 class TugasController extends Controller
 {
@@ -135,5 +136,33 @@ class TugasController extends Controller
                 'success' => 'File berhasil diupload.',
                 'extensionfile' => $extensionfile,
             ]);
+    }
+
+    public function laporan()
+    {
+        $jobs = DB::table('tugas')
+            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+            ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->orderBy('ruang.nama_ruang', 'asc')
+            ->get();
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
+        return view('manager.laporan', compact('jobs', 'waktu'));
+
+    }
+
+    public function print_laporan_pdf()
+    {
+        $jobs = DB::table('tugas')
+            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+            ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->orderBy('ruang.nama_ruang', 'asc')
+            ->get();
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+//        $pdf = app('dompdf.wrapper');
+//        $pdf->loadView('manager.print_laporan', compact('jobs', 'waktu'));
+//
+//        return $pdf->download("laporan_tugas_{$waktu}.pdf");
+        return view('manager.print_laporan', compact('jobs', 'waktu'));
     }
 }
