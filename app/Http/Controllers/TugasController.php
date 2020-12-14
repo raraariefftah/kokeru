@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PrintTugas;
 use App\Ruang;
 use App\Tugas;
 use App\User;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TugasController extends Controller
 {
@@ -164,5 +166,12 @@ class TugasController extends Controller
 //
 //        return $pdf->download("laporan_tugas_{$waktu}.pdf");
         return view('manager.print_laporan', compact('jobs', 'waktu'));
+    }
+
+    public function print_laporan_excel()
+    {
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
+        return Excel::download(new PrintTugas(), "laporan_tugas_{$waktu}.xlsx");
     }
 }

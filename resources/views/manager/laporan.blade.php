@@ -19,10 +19,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
-        $( function() {
+        $(function () {
             // $( "#datepicker" ).datepicker();
             $('.datepicker').datepicker();
-        } );
+        });
     </script>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -53,8 +53,9 @@
                                     Print as PDF </i></a>
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary" style="background-color: rebeccapurple"><i
-                                    class="nav-icon fas fa-file"> Print as Excel </i></button>
+                            <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_excel')}}"
+                               style="background-color: rebeccapurple"><i class="nav-icon fas fa-file">
+                                    Print as Excel </i></a>
                         </div>
                     </div>
                 </form>
@@ -63,10 +64,11 @@
                 <div class="row pt-4 pl-4">
                     <!-- kolom -->
                     <div class="col-md-2">
-                            {{-- default tanggal hari ini / pakek kalender untuk memilih tanggal sebelumnya --}}
+                        {{-- default tanggal hari ini / pakek kalender untuk memilih tanggal sebelumnya --}}
                         <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
                             <label for="tanggal">Pilih Tanggal</label>
-                            <input placeholder="Select date" type="date" id="tanggal" class="form-control" name="tanggal">
+                            <input placeholder="Select date" type="date" id="tanggal" class="form-control"
+                                   name="tanggal">
                         </div>
                     </div>
                 </div>
@@ -161,6 +163,7 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
+</div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
