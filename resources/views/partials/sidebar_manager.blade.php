@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgb(109, 57, 143)">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="{{ asset('/style/dist/img/AdminLTELogo.png')}}"
+        <img src="{{ asset('/style/dist/img/k.png')}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
