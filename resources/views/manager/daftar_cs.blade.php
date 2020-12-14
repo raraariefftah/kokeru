@@ -2,19 +2,21 @@
 
 @section('content')
 <!-- Content Header (Page header) -->
-<div class="container-fluid pt-3">
-    <div class="card">
+<div class="container-fluid">
+    <div class="card mt-3 ml-1">
         <div class="card-header">
             <h3 class="card-title">Daftar Cleaning Service</h3>
         </div>
 
         @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+        <div class="container-fluid pt-2">
+            <div class="alert alert-success text-dark" style="background-color: rgb(113, 196, 154);">
+                {{ session('success') }}
+            </div>
         </div>
         @endif
-        {{-- Buttom Tambah --}}
 
+        {{-- Buttom Tambah --}}
         <div class="row">
             <div class="col-sm ml-4 mt-3">
                 <a type="button" class="btn btn-primary" href="/manager/tambah_data_cs"><i class="nav-icon fas fa-plus">
@@ -22,9 +24,8 @@
             </div>
         </div>
 
-
         <!-- Table Daftar Ruangan -->
-        <div class="card-body" >
+        <div class="card-body">
             <div class="container-fluid">
                 <table id="table1" class="table table-bordered table-striped">
                     <thead style="text-align: center">
@@ -61,12 +62,12 @@
                                             </button>
                                         </form>
                                     </div>
-                                    <div class="col-sm-2 ml-2">
+                                    <div class="col-sm-2 ml-1">
                                         <form action="{{url('/manager/reset_password_cs/'.$c->id_user)}}" method="post"
                                             onsubmit="return confirm('Apakah Anda yakin ingin reset password CS {{$c->nama}}?')">
                                             @method('patch')
                                             @csrf
-                                            <button class="btn btn-info"><i class="nav-icon fas fa-refresh"></i>
+                                            <button class="btn btn-info"><i class="nav-icon fas fa-key"></i>
                                             </button>
                                         </form>
                                     </div>

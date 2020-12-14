@@ -2,17 +2,17 @@
 
 @section('content')
 <!-- Content Header (Page header) -->
-<div class="container-fluid pt-3">
-    <div class="row ">
+<div class="container-fluid">
+    <div class="row ml-1 mt-3 ">
         <!-- left column -->
-        <div class="col-md-7">
+        <div class="col-md-6.5">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Ruangan</h3>
                 </div>
                 {{-- alert --}}
                 @if (session('success'))
-                <div class="container-fluid pt-2">
+                <div class="container-fluid mt-2">
                     <div class="alert alert-success text-dark" style="background-color: rgb(113, 196, 154);">
                         {{ session('success') }}
                     </div>
