@@ -16,7 +16,8 @@ class CreateHistoryTable extends Migration
         Schema::create('history', function (Blueprint $table) {
             $table->increments('id_history');
             $table->integer('id_tugas')->unsigned();
-            $table->foreign('id_tugas')->references('id_tugas')->on('tugas');
+            $table->integer('id_cs')->unsigned();
+            $table->integer('id_ruang')->unsigned();
             $table->enum('old_status', ['SUDAH', 'BELUM']);
             $table->string('old_bukti1')->nullable();
             $table->string('old_bukti2')->nullable();

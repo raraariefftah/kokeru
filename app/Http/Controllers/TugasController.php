@@ -153,6 +153,37 @@ class TugasController extends Controller
 
     }
 
+    public function reset_tugas()
+    {
+        $jobs = Tugas::all();
+
+        foreach ($jobs as $job){
+            DB::table('history')->insert([
+                'id_tugas' => $job->id_tugas,
+                'id_cs' => $job->id_user,
+                'id_ruang' => $job->id_ruang,
+                'old_status' => $job->status,
+                'old_bukti1' => $job->bukti1,
+                'old_bukti2' => $job->bukti2,
+                'old_bukti3' => $job->bukti3,
+                'old_bukti4' => $job->bukti4,
+                'old_bukti5' => $job->bukti5,
+                'old_tanggal_penugasan' => $job->tanggal_penugasan,
+                'old_tanggal_selesai' => $job->tanggal_selesai,
+            ]);
+            $job->update([
+                'status' => 'BELUM',
+                'bukti1' => null,
+                'bukti2' => null,
+                'bukti3' => null,
+                'bukti4' => null,
+                'bukti5' => null,
+            ]);
+        }
+        return redirect()->route('dashboard_manager')
+            ->with('success', 'Penugasan berhasil reset');
+
+    }
     public function print_laporan_pdf()
     {
         $jobs = DB::table('tugas')

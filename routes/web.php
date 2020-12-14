@@ -46,7 +46,7 @@ Route::get('/manager/laporan', 'TugasController@laporan');
 Route::get('/manager/print_laporan_pdf', 'TugasController@print_laporan_pdf');
 Route::get('/manager/print_laporan_excel', 'TugasController@print_laporan_excel');
 
-Route::patch('/reset_tugas', 'TugasController@reset_tugas_manual');
+Route::patch('/reset_tugas', 'TugasController@reset_tugas');
 
 // Route::get('/dashboard_manager/daftar_tugas/laporan/pdf_laporan', function () {
 //     return view('/manajer/pdf_laporan');
