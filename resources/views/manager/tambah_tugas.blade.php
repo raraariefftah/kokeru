@@ -28,8 +28,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputNama">Nama CS</label>
-                            <select name="nama_cs" id="inputState" class="form-control">
+                            <label for="nama_cs">Nama CS</label>
+                            <select name="nama_cs" id="nama_cs" class="form-control">
                                 <option selected>Pilih CS..</option>
                                 @foreach($cs as $c)
                                     <option>{{$c->nama}}</option>

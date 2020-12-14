@@ -140,19 +140,6 @@ class TugasController extends Controller
             ]);
     }
 
-    public function laporan()
-    {
-        $jobs = DB::table('tugas')
-            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-            ->join('users', 'tugas.id_user', '=', 'users.id_user')
-            ->orderBy('ruang.nama_ruang', 'asc')
-            ->get();
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
-
-        return view('manager.laporan', compact('jobs', 'waktu'));
-
-    }
-
     public function reset_tugas()
     {
         $jobs = Tugas::all();
@@ -184,6 +171,59 @@ class TugasController extends Controller
             ->with('success', 'Penugasan berhasil reset');
 
     }
+
+    public function laporan()
+    {
+        $jobs = DB::table('tugas')
+            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+            ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->orderBy('ruang.nama_ruang', 'asc')
+            ->get();
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
+        return view('manager.laporan', compact('jobs', 'waktu'));
+
+    }
+
+    public function laporan_daftar_tugas(Request $request)
+    {
+//        dd($request->all());
+//        dd($request->input('datepicker'));
+        $from = $request->datepicker . ' 00:00:00';
+        $until = $request->datepicker . ' 24:00:00';
+        $status = $request->status;
+        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+
+        if ($status == 'SEMUA') {
+            $jobs = DB::table('tugas')
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        } elseif ($status == 'SUDAH') {
+            $jobs = DB::table('tugas')
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->where('tugas.status', '=', 'SUDAH')
+                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        } else{
+            $jobs = DB::table('tugas')
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->where('tugas.status', '=', 'BELUM')
+                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        }
+//        dd($jobs);
+
+        return view('manager.laporan', compact('jobs', 'waktu'));
+
+    }
+
     public function print_laporan_pdf()
     {
         $jobs = DB::table('tugas')

@@ -18,12 +18,11 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script>
-        $(function () {
-            // $( "#datepicker" ).datepicker();
-            $('.datepicker').datepicker();
-        });
-    </script>
+    <link rel="stylesheet" href="{{asset('/air-datepicker/dist/css/datepicker.css')}}">
+
+    <script src="{{asset('/air-datepicker/dist/js/datepicker.js')}}"></script>
+    <script src="{{asset('/air-datepicker/dist/js/i18n/datepicker.en.js')}}"></script>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -59,100 +58,102 @@
                         </div>
                     </div>
                 </form>
-
                 {{-- pilih tanggal --}}
-                <div class="row pt-4 pl-4">
-                    <!-- kolom -->
-                    <div class="col-md-2">
-                        {{-- default tanggal hari ini / pakek kalender untuk memilih tanggal sebelumnya --}}
-                        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
-                            <label for="tanggal">Pilih Tanggal</label>
-                            <input placeholder="Select date" type="date" id="tanggal" class="form-control"
-                                   name="tanggal">
+                <form role="form" action="{{ url('/manager/laporan_daftar_tugas') }}" method="get">
+                    @csrf
+                    <div class="row pt-4 pl-4">
+                        <!-- kolom -->
+                        <div class="col-md-2">
+                            {{-- default tanggal hari ini / pakek kalender untuk memilih tanggal sebelumnya --}}
+                            <label for="datepicker">Pilih Tanggal</label>
+{{--                            <input type='text' class="datepicker-here form-control" data-position="right top"--}}
+{{--                                   id="datepicker" name="datepicker" data-language='en'>--}}
+                            <input type="date" class="form-control" id="datepicker" name="datepicker">
+
                         </div>
                     </div>
-                </div>
 
-                {{-- pilih status --}}
-                <div class="row pt-3 pl-4">
-                    <!-- left column -->
-                    <div class="col-md-2">
-                        <label for="inputState">Pilih Status</label>
-                        <select id="inputState" class="form-control" name="status">
-                            <option selected>Pilih Status</option>
-                            <option>SEMUA</option>
-                            <option>BELUM</option>
-                            <option>SUDAH</option>
-                        </select>
+                    {{-- pilih status --}}
+                    <div class="row pt-3 pl-4">
+                        <!-- left column -->
+                        <div class="col-md-2">
+                            <label for="inputState">Pilih Status</label>
+                            <select id="inputState" class="form-control" name="status">
+                                <option selected>Pilih Status</option>
+                                <option>SEMUA</option>
+                                <option>BELUM</option>
+                                <option>SUDAH</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <form>
                     <div class="form-row align-items-center pt-3 pl-4">
                         <div class="col-auto">
-                            <button type="button" class="btn btn-warning"><b> Tampil </b></button>
+                                <button class="btn btn-warning"><b>
+                                        Tampil </b></button>
+                            </form>
                         </div>
                     </div>
                 </form>
 
-                {{--             Isi Laporan--}}
-                <section id="isi" class="isi">
-                    <div class="container-fluid">
-                        <div class="row pt-4">
-                            <div class="col text-center">
-                                <h5>Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h5>
-                                <h5>Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h5>
-                                <p>&lt;&lt;Dicetak pada {{$waktu}} WIB&gt;&gt;</p>
+                    {{--             Isi Laporan--}}
+                    <section id="isi" class="isi">
+                        <div class="container-fluid">
+                            <div class="row pt-4">
+                                <div class="col text-center">
+                                    <h5>Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h5>
+                                    <h5>Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h5>
+                                    <p>&lt;&lt;Dicetak pada {{$waktu}} WIB&gt;&gt;</p>
+                                </div>
                             </div>
+                            <!-- /.row -->
                         </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.container -->
-                </section>
+                        <!-- /.container -->
+                    </section>
 
 
-                <!-- Table Daftar Ruangan -->
-                <div class="card-body">
-                    <div class="container-fluid">
-                        <table id="table1" class="table table-bordered table-striped ">
-                            <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Ruang</th>
-                                <th>Nama CS</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($jobs as $job)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$job->nama_ruang}}</td>
-                                    <td>{{$job->nama}}</td>
-                                    <td>{{$job->status}}</td>
+                    <!-- Table Daftar Ruangan -->
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <table id="table1" class="table table-bordered table-striped ">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Ruang</th>
+                                    <th>Nama CS</th>
+                                    <th>Status</th>
                                 </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-
-                {{--             Tanda tangan--}}
-                <section id="isi" class="isi">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col text-right pr-5">
-                                <p>Approval</p>
-                                <p>&lt;&lt;ttd&gt;&gt;</p>
-                                <p>Nama Manajer</p>
-                                <p>Manajer</p>
-                            </div>
+                                </thead>
+                                <tbody>
+                                @foreach($jobs as $job)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$job->nama_ruang}}</td>
+                                        <td>{{$job->nama}}</td>
+                                        <td>{{$job->status}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
                         </div>
-                        <!-- /.row -->
                     </div>
-                    <!-- /.container -->
-                </section>
-                --}}
-                <!-- /.card-body -->
+
+                    {{--             Tanda tangan--}}
+                    <section id="isi" class="isi">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col text-right pr-5">
+                                    <p>Approval</p>
+                                    <p>&lt;&lt;ttd&gt;&gt;</p>
+                                    <p>Nama Manajer</p>
+                                    <p>Manajer</p>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container -->
+                    </section>
+                    --}}
+                    <!-- /.card-body -->
             </div>
         </div>
         <!-- /.content-wrapper -->
@@ -164,15 +165,15 @@
         <!-- /.control-sidebar -->
     </div>
 </div>
-    <!-- ./wrapper -->
+<!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('/style/plugins/jquery/jquery.min.js')}}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('/style/dist/js/adminlte.min.js')}}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('/style/dist/js/demo.js')}}"></script>
+<!-- jQuery -->
+<script src="{{ asset('/style/plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('/style/dist/js/adminlte.min.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('/style/dist/js/demo.js')}}"></script>
 </body>
 </html>
