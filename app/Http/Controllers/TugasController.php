@@ -179,7 +179,7 @@ class TugasController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+        $waktu = Carbon::now()->translatedFormat('l d F Y H:i');
 
         return view('manager.laporan', compact('jobs', 'waktu'));
 
@@ -231,7 +231,7 @@ class TugasController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+        $waktu = Carbon::now()->translatedFormat('l d F Y H:i');
 //        $pdf = app('dompdf.wrapper');
 //        $pdf->loadView('manager.print_laporan', compact('jobs', 'waktu'));
 //
