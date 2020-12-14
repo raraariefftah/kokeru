@@ -27,6 +27,7 @@ class CreateTugasTable extends Migration
             $table->string('bukti5')->nullable();
             $table->dateTime('tanggal_penugasan', 0)->nullable();
             $table->dateTime('tanggal_selesai', 0)->nullable();
+            $table->timestamps();
         });
     }
 

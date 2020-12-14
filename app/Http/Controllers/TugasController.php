@@ -57,6 +57,7 @@ class TugasController extends Controller
             'id_ruang' => $idruang,
             'status' => $request->status,
             'tanggal_penugasan' => Carbon::now(),
+            'created_at' => Carbon::now(),
         ]);
 
         return redirect()->route('dashboard_manager')
@@ -98,4 +99,38 @@ class TugasController extends Controller
         //
     }
 
+    public function upload_bukti($id_tugas)
+    {
+        $job = Tugas::find($id_tugas);
+//        dd($job);
+
+        return view('cs.upload_bukti', compact('job'));
+    }
+
+    public function update_bukti(Request $request, $id_tugas)
+    {
+//        dd($request->bukti);
+        $job = Tugas::find($id_tugas);
+        $i = 0;
+        foreach($request->file('bukti') as $file)
+        {
+            $i++;
+//            $name = $file;
+//            $file->move(public_path().'/uploads/', $name);
+            $bukti = $file->store('images', 'public');
+//            $imgData[] = $name;
+//            dd($bukti);
+            $job->update([
+                "bukti{$i}" => $bukti,
+            ]);
+        }
+
+        $extensionfile = $request->bukti[0]->extension();
+//        dd($extensionfile);
+        return redirect()->back()
+            ->with([
+                'success' => 'File berhasil diupload.',
+                'extensionfile' => $extensionfile,
+            ]);
+    }
 }
