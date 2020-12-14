@@ -20,6 +20,6 @@ class PrintTugas implements FromView
             ->get();
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
-        return view('manager.print_laporan', compact('jobs', 'waktu'));
+        return view('manager.print_laporan_excel', compact('jobs', 'waktu'));
     }
 }
