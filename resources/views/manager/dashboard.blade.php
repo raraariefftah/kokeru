@@ -82,52 +82,55 @@
             </div>
         </div>
     </div>
-    <section id="b2" class="b2">
-        <div class="container-fluid mt-3">
-            <div class="card shadow h-100">
-                <div class="row pt-3 pr-3">
-                    <div class="col-auto ml-auto">
-                        <a type="button" class="btn btn-warning" href="#"><i class="nav-icon fas fa-undo">
-                                Reset </i></a>
-                    </div>
-                    <div class="col-auto">
-                        <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i class="nav-icon fas fa-plus">
-                                Tambah </i></a>
-                    </div>
-                    <div class="col-auto">
-                        <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="#"><i
-                                class="nav-icon fas fa-file">
-                                Laporan </i></a>
-                    </div>
+
+    <div class="container-fluid">
+            <div class="row pt-3 pr-3">
+                <div class="col-auto ml-auto">
+                    <form action="{{ url('/reset_tugas') }}"
+                          method="post"
+                          onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
+                        @method('patch')
+                        @csrf
+                        <button class="btn btn-warning"><i class="nav-icon fas fa-undo">
+                                Reset </i></button>
+                    </form>
                 </div>
-                <hr>
-                <div class="row mt-2">
-                    <div class="col text-center" style="color :rgb(63, 112, 206);">
-                        <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
-                        <h4>Gedung Bersama Maju</h4>
-                        <h4 class="pt-3">{{$waktu}} WIB</h4>
-                    </div>
+                <div class="col-auto">
+                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i class="nav-icon fas fa-plus">
+                            Tambah </i></a>
                 </div>
-                <!-- row -->
-                <div class=" row">
-                    @foreach ($jobs as $job)
-                        <div class="col-lg-3 col-6">
-                            <!-- small card -->
-                            <div
-                                class="small-box text-center {{ $job->status == 'SUDAH' ? 'bg-success' : 'bg-warning' }}">
-                                <div class="inner">
-                                    <h3>{{ $job->nama_ruang }}</h3>
-                                    <p>{{ $job->status }}</p>
-                                    <p>{{ $job->nama }}</p>
-                                    <a href="#" class="box-link" style="color: white">&lt;&lt;detil&gt;&gt;</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                <div class="col-auto">
+                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="{{url('manager/laporan')}}"><i
+                            class="nav-icon fas fa-file">
+                            Laporan </i></a>
                 </div>
-                <!-- /.container -->
             </div>
+            <hr>
+            <div class="row mt-2">
+                <div class="col text-center" style="color :rgb(63, 112, 206);">
+                    <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
+                    <h4>Gedung Bersama Maju</h4>
+                    <h4 class="pt-2">{{$waktu}} WIB</h4>
+                </div>
+            </div>
+            <!-- row -->
+            <div class=" row mt-3 pl-2 pr-2">
+                @foreach ($jobs as $job)
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box text-center {{ $job->status == 'SUDAH' ? 'bg-success' : 'bg-warning' }}">
+                        <div class="inner">
+                            <h3>{{ $job->nama_ruang }}</h3>
+                            <p>{{ $job->status }}</p>
+                            <p>{{ $job->nama }}</p>
+                            <a href="#" class="box-link" style="color: white">&lt;&lt;detil&gt;&gt;</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <!-- /.container -->
         </div>
-    </section>
+    </div>
 </div>
 @endsection

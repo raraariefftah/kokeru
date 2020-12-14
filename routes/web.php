@@ -42,6 +42,10 @@ Route::patch('/manager/update_profil/{id}', 'ManagerController@update');
 Route::get('/manager/ubah_password/{id}', 'ManagerController@ubahPassword');
 Route::patch('/manager/update_password/{id}', 'ManagerController@updatePassword');
 Route::patch('/manager/reset_password_cs/{id}', 'ManagerController@resetPasswordCS');
+Route::get('/manager/laporan', 'TugasController@laporan');
+Route::get('/manager/print_laporan_pdf', 'TugasController@print_laporan_pdf');
+
+Route::patch('/reset_tugas', 'TugasController@reset_tugas_manual');
 
 // Route::get('/dashboard_manager/daftar_tugas/laporan/pdf_laporan', function () {
 //     return view('/manajer/pdf_laporan');
