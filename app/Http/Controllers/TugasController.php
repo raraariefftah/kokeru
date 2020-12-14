@@ -124,6 +124,9 @@ class TugasController extends Controller
                 "bukti{$i}" => $bukti,
             ]);
         }
+        $job->update([
+            "status" => 'SUDAH',
+        ]);
 
         $extensionfile = $request->bukti[0]->extension();
 //        dd($extensionfile);
