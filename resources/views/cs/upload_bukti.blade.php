@@ -51,6 +51,9 @@
                             <div class="form-group">
                                 <label for="bukti">Bukti (max 5 file)</label>
                                 <input type="file" class="form-control-file" id="bukti" name="bukti[]" multiple>
+                                @if ($errors->has('bukti[]'))
+                                    <span class="text-danger">{{ $errors->first('bukti[]') }}</span>
+                                @endif
                             </div>
                             {{--                            @if($job->bukti2 != null)--}}
                             {{--                                <img src="{{asset('/storage/'.$job->bukti2)}}" height="200px">--}}

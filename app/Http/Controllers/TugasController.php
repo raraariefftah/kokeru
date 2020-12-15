@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TugasController extends Controller
@@ -29,12 +30,12 @@ class TugasController extends Controller
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
 
-        $hari =  Carbon::now()->translatedFormat('l');
+        $hari = Carbon::now()->translatedFormat('l');
         $tanggal = Carbon::now()->translatedFormat('d F Y');
         $waktu = Carbon::now()->translatedFormat('H:i');
 
 //        var_dump($tugas);
-        return view('awal', compact('jobs', 'hari', 'tanggal', 'waktu'));
+        return view('awal', compact('jobs','hari', 'tanggal', 'waktu'));
     }
 
     public function create()
@@ -51,12 +52,27 @@ class TugasController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request->nama_cs, $request->ruang, $request->status);
+        Validator::make($request->all(), [
+            'ruang' => 'required',
+            'nama_cs' => 'required',
+            'status' => 'required',
+        ],
+            [
+                'ruang.required' => 'Silahkan pilih ruang',
+                'nama_cs.required' => 'Silahkan pilih nama CS',
+                'status.required' => 'Silahkan pilih status'
+            ])->validate();
+//        if ($validator->fails()) {
+//            return redirect()->back()
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
+
         $cs = User::where('nama', $request->nama_cs)->first();
         $ruang = Ruang::where('nama_ruang', $request->ruang)->first();
         $iduser = $cs['id_user'];
         $idruang = $ruang['id_ruang'];
-//        dd($iduser, $idruang);
+
         DB::table('tugas')->insert([
             'id_user' => $iduser,
             'id_ruang' => $idruang,
@@ -75,16 +91,15 @@ class TugasController extends Controller
 
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
-        if(Auth::user()->role=='cs'){
+        if (Auth::user()->role == 'cs') {
             $cs_jobs = DB::table('tugas')
-            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-            ->join('users', 'tugas.id_user', '=', 'users.id_user')
-            ->where('tugas.id_user', '=', $id)
-            ->get();
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->where('tugas.id_user', '=', $id)
+                ->get();
 
             return view('/cs/dashboard_cs', compact('cs_jobs', 'waktu'));
-        }
-        else{
+        } else {
             return abort(404);
         }
     }
@@ -107,24 +122,24 @@ class TugasController extends Controller
     public function upload_bukti($id_tugas)
     {
         $job = Tugas::find($id_tugas);
-//        dd($job);
 
         return view('cs.upload_bukti', compact('job'));
     }
 
     public function update_bukti(Request $request, $id_tugas)
     {
-//        dd($request->bukti);
+        Validator::make($request->all(), [
+            'bukti[]' => 'required|file',
+        ],
+            [
+                'bukti[].required' => 'Silahkan pilih file.'
+            ])->validate();
+
         $job = Tugas::find($id_tugas);
         $i = 0;
-        foreach($request->file('bukti') as $file)
-        {
+        foreach ($request->file('bukti') as $file) {
             $i++;
-//            $name = $file;
-//            $file->move(public_path().'/uploads/', $name);
             $bukti = $file->store('images', 'public');
-//            $imgData[] = $name;
-//            dd($bukti);
             $job->update([
                 "bukti{$i}" => $bukti,
             ]);
@@ -146,7 +161,7 @@ class TugasController extends Controller
     {
         $jobs = Tugas::all();
 
-        foreach ($jobs as $job){
+        foreach ($jobs as $job) {
             DB::table('history')->insert([
                 'id_tugas' => $job->id_tugas,
                 'id_cs' => $job->id_user,
@@ -182,11 +197,13 @@ class TugasController extends Controller
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
 
-        $hari =  Carbon::now()->translatedFormat('l');
+        $hari = Carbon::now()->translatedFormat('l');
         $tanggal = Carbon::now()->translatedFormat('d F Y');
         $waktu = Carbon::now()->translatedFormat('H:i');
 
-        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu'));
+        $waktutugas = Carbon::now()->translatedFormat('l, d F Y');
+
+        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktutugas'));
 
     }
 
@@ -197,9 +214,14 @@ class TugasController extends Controller
         $from = $request->datepicker . ' 00:00:00';
         $until = $request->datepicker . ' 24:00:00';
         $status = $request->status;
-        $hari =  Carbon::now()->translatedFormat('l');
+        $hari = Carbon::now()->translatedFormat('l');
         $tanggal = Carbon::now()->translatedFormat('d F Y');
         $waktu = Carbon::now()->translatedFormat('H:i');
+        if ($request->datepicker != null) {
+            $waktutugas = Carbon::parse($request->datepicker)->translatedFormat('l, d F Y');
+        } else {
+            $waktutugas = Carbon::now()->translatedFormat('l, d F Y');
+        }
 
         if ($status == 'SEMUA') {
             $jobs = DB::table('tugas')
@@ -216,7 +238,7 @@ class TugasController extends Controller
                 ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
-        } else{
+        } else {
             $jobs = DB::table('tugas')
                 ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
                 ->join('users', 'tugas.id_user', '=', 'users.id_user')
@@ -227,7 +249,7 @@ class TugasController extends Controller
         }
 //        dd($jobs);
 
-        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu'));
+        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktugas'));
 
     }
 
@@ -238,7 +260,7 @@ class TugasController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
-        $hari =  Carbon::now()->translatedFormat('l');
+        $hari = Carbon::now()->translatedFormat('l');
         $tanggal = Carbon::now()->translatedFormat('d F Y');
         $waktu = Carbon::now()->translatedFormat('H:i');
         $pdf = app('dompdf.wrapper');

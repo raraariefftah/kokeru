@@ -20,6 +20,9 @@
                                 <label for="exampleInputNamaRuangan">Nama Ruang</label>
                                 <input name="nama" class="form-control" id="exampleInputNamaRuangan"
                                     placeholder="Masukkan Nama Ruangan">
+                                @if ($errors->has('nama'))
+                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                @endif
                             </div>
                         </div>
                         <!-- /.card-body -->

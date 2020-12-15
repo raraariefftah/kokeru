@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class CSController extends Controller
 {
@@ -34,11 +35,19 @@ class CSController extends Controller
 
     public function store(Request $request)
     {
-//        $request->validate([
-//            'nama' => 'required',
-//            'email' => 'required|email',
-//            'no_hp' => 'required|alpha_num'
-//        ]);
+        Validator::make($request->all(), [
+            'nama' => 'required',
+            'email' => 'required|email',
+            'no_hp' => 'required|alpha_num'
+        ],
+            [
+                'nama.required' => 'Silahkan isi nama CS',
+                'email.required' => 'Silahkan isi email',
+                'email.email' => 'Silahkan isi email dengan benar',
+                'no_hp.required' => 'Silahkan isi no hp',
+                'no_hp.alpha_num' => 'Silahkan isi no hp dengan benar',
+            ])->validate();
+
 
         DB::table('users')->insert([
             'nama' => $request->nama,

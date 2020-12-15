@@ -20,15 +20,24 @@
                         <div class="form-group row">
                             <label for="exampleInputNama">Nama CS</label>
                             <input name="nama" class="form-control"
-                                   placeholder="Masukkan Nama CS">
+                                   placeholder="Masukkan Nama CS" value="{{old('nama')}}">
+                            @if ($errors->has('nama'))
+                                <span class="text-danger">{{ $errors->first('nama') }}</span>
+                            @endif
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputEmail">Email</label>
-                            <input name="email" class="form-control"  placeholder="Masukkan Email">
+                            <input name="email" class="form-control"  placeholder="Masukkan Email" value="{{old('email')}}">
+                            @if ($errors->has('email'))
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputNoHp">No Hp</label>
-                            <input name="no_hp" class="form-control"  placeholder="Masukkan No Hp">
+                            <input name="no_hp" class="form-control"  placeholder="Masukkan No Hp" value="{{old('no_hp')}}">
+                            @if ($errors->has('no_hp'))
+                                <span class="text-danger">{{ $errors->first('no_hp') }}</span>
+                            @endif
                         </div>
                     </div>
                     <!-- /.card-body -->

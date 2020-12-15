@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="exampleInputNamaRuangan">Nama Ruang</label>
                             <input name="nama" class="form-control" id="exampleInputNamaRuangan"
-                                placeholder="Masukkan Nama Ruangan", value="{{$ruang->nama_ruang}}">
+                                placeholder="Masukkan Nama Ruangan" value="{{$ruang->nama_ruang}}">
                         </div>
                     </div>
                     <!-- /.card-body -->

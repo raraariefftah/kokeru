@@ -6,6 +6,7 @@ use App\Ruang;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class RuangController extends Controller
 {
@@ -28,6 +29,13 @@ class RuangController extends Controller
 
     public function store(Request $request)
     {
+        Validator::make($request->all(), [
+            'nama' => 'required',
+        ],
+            [
+                'nama.required' => 'Silahkan isi nama ruang.',
+            ])->validate();
+
         DB::table('ruang')->insert([
             'nama_ruang' => $request->nama,
             'created_at' => Carbon::now(),
@@ -52,6 +60,7 @@ class RuangController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $ruang = Ruang::find($id);
         $ruang->update([
                 'nama_ruang' => $request->nama,
