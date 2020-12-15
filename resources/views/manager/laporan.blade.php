@@ -49,12 +49,12 @@
                         <div class="form-row align-items-center pt-3 pl-4">
                             <div class="col-auto">
                                 <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_pdf')}}"><i
-                                        class="nav-icon fas fa-file">
+                                        class="nav-icon fas fa-file-pdf">
                                         Print as PDF </i></a>
                             </div>
                             <div class="col-auto">
                                 <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_excel')}}"
-                                    style="background-color: rgb(36, 119, 47)"><i class="nav-icon fas fa-file">
+                                    style="background-color: rgb(36, 119, 47)"><i class="nav-icon fas fa-file-excel">
                                         Print as Excel </i></a>
                             </div>
                         </div>
@@ -100,8 +100,8 @@
                     <div class="row pt-4 text-center" >
                         <div class="col">
                             <h5 style="font-weight: bold">Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h5>
-                            <h5 style="font-weight: bold">Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h5>
-                            <p>&lt;&lt;Tanggal Cetak {{$waktu}} WIB&gt;&gt;</p>
+                            <h5 style="font-weight: bold">Hari Kamis Tanggal 12 November 2020</h5>
+                            <p>&lt;&lt;Tanggal Cetak {{$tanggal}} Jam {{$waktu}} WIB&gt;&gt;</p>
                         </div>
                     </div>
                     

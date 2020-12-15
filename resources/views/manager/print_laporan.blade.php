@@ -5,34 +5,47 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>laporan</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('/style/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('/style/dist/css/adminlte.min.css') }}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
+<style>
+    .title {}
+
+    title.h5 {
+        font-weight: bold
+    }
+
+    .table1 {
+        color: #232323;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+
+    .table1,
+    th,
+    td {
+        border: 1px solid rgb(0, 0, 0);
+        padding: 5px 5px;
+    }
+
+</style>
+
 <body>
-    <div class="text-center pt-5">
-        <h5 style="font-weight: bold">Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h5>
-        <h5 style="font-weight: bold">Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h5>
-        <p>&lt;&lt;Tanggal Cetak {{$waktu}} WIB&gt;&gt;</p>
+    <div class="title">
+        <center>
+            <h4>Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h4>
+            <h4>Hari Kamis Tanggal 12 November 2020</h4> 
+            <p>&lt;&lt;Tanggal Cetak {{$tanggal}} Jam {{$waktu}} WIB&gt;&gt;</p>
+        </center>
     </div>
 
-    <div class="container">
-        <table class="table table-bordered">
+    <center>
+        <table class="table1">
             <thead>
                 <tr class="text-center">
-                    <th width="5px">No</th>
-                    <th width="200px">Ruang</th>
-                    <th width="400px">Nama CS</th>
-                    <th width="200px">Status</th>
+                    <th width="10px">No</th>
+                    <th width="190px">Ruang</th>
+                    <th width="250px">Nama CS</th>
+                    <th width="198px">Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,28 +58,18 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
-
-        <div class="row">
-            <div class="col" style="margin-left: 80%">
-                <p>Approval</p>
-                <p>&lt;&lt;ttd&gt;&gt;</p>
-                <p>Nama Manajer</p>
-                <p>Manajer</p>
-            </div>
+            </table>
+    </center>
+    <div class="row">
+        <div class="col" style="margin-left: 73%">
+            <p>Approval</p>
+            <p>&lt;&lt;ttd&gt;&gt;</p>
+            <p>Nama Manajer</p>
+            <p>Manajer</p>
         </div>
     </div>
+    </div>
 
-
-    <!-- ./wrapper -->
-    <!-- jQuery -->
-    <script src="{{ asset('/style/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('/style/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('/style/dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('/style/dist/js/demo.js') }}"></script>
 </body>
 
 </html>

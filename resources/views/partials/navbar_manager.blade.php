@@ -18,11 +18,11 @@
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="{{url('/manager/edit_profil/'.Auth::user()->id_user)}}">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Profil
                     </a>
                     <a class="dropdown-item" href="{{url('/manager/ubah_password/'.Auth::user()->id_user)}}">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                         Ubah Password
                     </a>
                     <div class="dropdown-divider"></div>
