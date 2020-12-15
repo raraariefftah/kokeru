@@ -29,10 +29,12 @@ class TugasController extends Controller
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
 
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+        $hari =  Carbon::now()->translatedFormat('l');
+        $tanggal = Carbon::now()->translatedFormat('d F Y');
+        $waktu = Carbon::now()->translatedFormat('H:i');
 
 //        var_dump($tugas);
-        return view('awal', compact('jobs', 'waktu'));
+        return view('awal', compact('jobs', 'hari', 'tanggal', 'waktu'));
     }
 
     public function create()
@@ -179,9 +181,12 @@ class TugasController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
-        $waktu = Carbon::now()->translatedFormat('l d F Y H:i');
 
-        return view('manager.laporan', compact('jobs', 'waktu'));
+        $hari =  Carbon::now()->translatedFormat('l');
+        $tanggal = Carbon::now()->translatedFormat('d F Y');
+        $waktu = Carbon::now()->translatedFormat('H:i');
+
+        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu'));
 
     }
 
@@ -192,7 +197,9 @@ class TugasController extends Controller
         $from = $request->datepicker . ' 00:00:00';
         $until = $request->datepicker . ' 24:00:00';
         $status = $request->status;
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+        $hari =  Carbon::now()->translatedFormat('l');
+        $tanggal = Carbon::now()->translatedFormat('d F Y');
+        $waktu = Carbon::now()->translatedFormat('H:i');
 
         if ($status == 'SEMUA') {
             $jobs = DB::table('tugas')
@@ -220,7 +227,7 @@ class TugasController extends Controller
         }
 //        dd($jobs);
 
-        return view('manager.laporan', compact('jobs', 'waktu'));
+        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu'));
 
     }
 
@@ -231,12 +238,14 @@ class TugasController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
-        $waktu = Carbon::now()->translatedFormat('l d F Y H:i');
-//        $pdf = app('dompdf.wrapper');
-//        $pdf->loadView('manager.print_laporan', compact('jobs', 'waktu'));
-//
-//        return $pdf->download("laporan_tugas_{$waktu}.pdf");
-        return view('manager.print_laporan', compact('jobs', 'waktu'));
+        $hari =  Carbon::now()->translatedFormat('l');
+        $tanggal = Carbon::now()->translatedFormat('d F Y');
+        $waktu = Carbon::now()->translatedFormat('H:i');
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('manager.print_laporan', compact('jobs', 'hari', 'tanggal', 'waktu'));
+
+        return $pdf->download("laporan_tugas_{$waktu}.pdf");
+        //return view('manager.print_laporan', compact('jobs', 'waktu'));
     }
 
     public function print_laporan_excel()

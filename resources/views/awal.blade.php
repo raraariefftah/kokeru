@@ -16,7 +16,7 @@
                 <div class="col text-center" style="color :rgb(63, 112, 206);">
                 <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
                 <h4>Gedung Bersama Maju</h4>
-                <h4 class="mt-3">{{$waktu}} WIB</h4>
+                <h4 class="mt-3">Hari {{$hari}} Tanggal {{$tanggal}} Jam {{$waktu}} WIB</h4>
             </div>
         </div>
 

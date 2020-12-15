@@ -25,7 +25,9 @@ class ManagerController extends Controller
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
             ->orderBy('ruang.nama_ruang', 'asc')
             ->get();
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+        $hari =  Carbon::now()->translatedFormat('l');
+        $tanggal = Carbon::now()->translatedFormat('d F Y');
+        $waktu = Carbon::now()->translatedFormat('H:i');
 
         $jumlahcs = User::where('role', 'cs')->count();
         $jumlahruang = Ruang::all()->count();
@@ -33,7 +35,7 @@ class ManagerController extends Controller
         $tugasselesai = Tugas::where('status', 'SUDAH')->count();
 
         if(Auth::user()->role=='manager'){
-            return view('manager.dashboard', compact('jobs', 'waktu', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
+            return view('manager.dashboard', compact('jobs', 'hari', 'tanggal', 'waktu', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
         }
         else{
             return abort(404);

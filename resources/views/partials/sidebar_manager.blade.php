@@ -1,11 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-5" style="background-color: rgb(109, 57, 143)">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="{{ asset('/style/dist/img/k.png')}}"
+        <img src="{{ asset('/style/dist/img/logo3.png')}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-        <span class="brand-text font-weight-light"><b>Dashboard Manager </b></span>
+        <span class="brand-text font-weight-light"><b>Dashboard Manajer </b></span>
     </a>
 
     <!-- Sidebar -->
