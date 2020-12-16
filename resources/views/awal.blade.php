@@ -31,8 +31,8 @@
                                 <h3>{{ $job->nama_ruang }}</h3>
                                 <p>{{ $job->status }}</p>
                                 <p>{{ $job->nama }}</p>
-                                <a href="#exampleModal{{$job->id_tugas}}" class="box-link"
-                                    data-toggle="modal" data-target="#exampleModal{{$job->id_tugas}}"
+                                <a href="#exampleModal{{ $job->id_tugas }}" class="box-link" data-toggle="modal"
+                                    data-target="#exampleModal{{ $job->id_tugas }}"
                                     style="color : {{ $job->status == 'SUDAH' ? 'white' : 'black' }}">&lt;&lt;detil&gt;&gt;</a>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                 @endforeach
             </div>
             @foreach ($jobs as $job)
-                <div class="modal fade" id="exampleModal{{$job->id_tugas}}" tabindex="-1" role="dialog"
+                <div class="modal fade" id="exampleModal{{ $job->id_tugas }}" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -53,10 +53,52 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="col-md-offset-2">
-                                    <div class="form-group">
-                                        <label for="Gambar 1">Gambar 1</label>
-                                    </div>
+                                <div class="col-md-offset-2 text-center">
+                                    @if ($job->bukti1 != null)
+                                        @if (pathinfo(storage_path($job->bukti1), PATHINFO_EXTENSION) == 'mp4')
+                                            <video height="300px" controls>
+                                                <source src="{{ asset('/storage/' . $job->bukti1) }}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('/storage/' . $job->bukti1) }}" height="200px">
+                                        @endif
+                                    @endif
+                                    @if ($job->bukti2 != null)
+                                        @if (pathinfo(storage_path($job->bukti2), PATHINFO_EXTENSION) == 'mp4')
+                                            <video height="300px" controls>
+                                                <source src="{{ asset('/storage/' . $job->bukti2) }}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('/storage/' . $job->bukti2) }}" height="200px">
+                                        @endif
+                                    @endif
+                                    @if ($job->bukti3 != null)
+                                        @if (pathinfo(storage_path($job->bukti3), PATHINFO_EXTENSION) == 'mp4')
+                                            <video height="300px" controls>
+                                                <source src="{{ asset('/storage/' . $job->bukti3) }}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('/storage/' . $job->bukti3) }}" height="200px">
+                                        @endif
+                                    @endif
+                                    @if ($job->bukti4 != null)
+                                        @if (pathinfo(storage_path($job->bukti4), PATHINFO_EXTENSION) == 'mp4')
+                                            <video height="300px" controls>
+                                                <source src="{{ asset('/storage/' . $job->bukti4) }}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('/storage/' . $job->bukti4) }}" height="200px">
+                                        @endif
+                                    @endif
+                                    @if ($job->bukti5 != null)
+                                        @if (pathinfo(storage_path($job->bukti5), PATHINFO_EXTENSION) == 'mp4')
+                                            <video height="300px" controls>
+                                                <source src="{{ asset('/storage/' . $job->bukti5) }}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <img src="{{ asset('/storage/' . $job->bukti5) }}" height="200px">
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
