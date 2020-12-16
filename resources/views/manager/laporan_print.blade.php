@@ -63,21 +63,22 @@
                 {{-- pilih tanggal --}}
                 <form role="form" action="{{ url('/manager/laporan_daftar_tugas') }}" method="get">
                     @csrf
+                    @if($status != null)
                         <div class="form-row align-items-center pt-3 pl-4">
                             <div class="col-auto">
                                 <a type="button" class="btn btn-primary"
-                                   href="{{url('manager/print_laporan_pdf/'.$waktu_tugas.'/SUDAH')}}">
-                                    <i class="nav-icon fas fa-file">
+                                   href="{{url('manager/print_laporan_pdf/'.$tanggalprint.'/'.$status)}}"><i
+                                        class="nav-icon fas fa-file">
                                         Print as PDF </i></a>
                             </div>
                             <div class="col-auto">
                                 <a type="button" class="btn btn-primary"
-                                   href="{{url('manager/print_laporan_excel/'.$waktutugas.'/SUDAH')}}"
-                                   style="background-color: rgb(36, 119, 47)">
-                                    <i class="nav-icon fas fa-file">
+                                   href="{{url('manager/print_laporan_excel/'.$tanggalprint.'/'.$status)}}"
+                                   style="background-color: rgb(36, 119, 47)"><i class="nav-icon fas fa-file">
                                         Print as Excel </i></a>
                             </div>
                         </div>
+                    @endif
                     <div class="row pt-3 ml-3">
                         <!-- kolom -->
                         <div class="col-md-2">
@@ -138,7 +139,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$job->nama_ruang}}</td>
                                 <td>{{$job->nama}}</td>
-                                <td>{{$job->status}}</td>
+                                <td>{{$job->old_status}}</td>
                             </tr>
                         @endforeach
                     </table>

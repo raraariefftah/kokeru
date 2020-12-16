@@ -11,15 +11,60 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class PrintTugas implements FromView
 {
+    protected $waktutugas;
+    protected $status;
+
+    function __construct($waktutugas, $status) {
+        $this->waktutugas = $waktutugas;
+        $this->status = $status;
+    }
+
     public function view(): View
     {
-        $jobs = DB::table('tugas')
-            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-            ->join('users', 'tugas.id_user', '=', 'users.id_user')
-            ->orderBy('ruang.nama_ruang', 'asc')
-            ->get();
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
+        if ($this->waktutugas == null) {
+            $from = Carbon::today()->toDateString() . ' 00:00:00';
+            $until = Carbon::today()->toDateString() . ' 24:00:00';
+            $waktu_tugas = Carbon::now()->translatedFormat('l, d F Y');
+        } else {
+            $from = $this->waktutugas . ' 00:00:00';
+            $until = $this->waktutugas . ' 24:00:00';
+            $waktu_tugas = Carbon::parse($from)->translatedFormat('l, d F Y');
+        }
 
-        return view('manager.print_laporan_excel', compact('jobs', 'waktu'));
+        if ($this->status == null) {
+            $this->status = 'SEMUA';
+        }
+
+        if ($this->status == 'SEMUA') {
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        } elseif ($this->status == 'SUDAH') {
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->where('history.old_status', '=', 'SUDAH')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        } else {
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->where('history.old_status', '=', 'BELUM')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        }
+
+        $hari = Carbon::now()->translatedFormat('l');
+        $tanggal = Carbon::now()->translatedFormat('d F Y');
+        $waktu = Carbon::now()->translatedFormat('H:i');
+
+        return view('manager.print_laporan_excel', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktu_tugas'));
+
     }
 }

@@ -261,8 +261,9 @@ class TugasController extends Controller
         $waktu = Carbon::now()->translatedFormat('H:i');
 
         $waktutugas = Carbon::now()->translatedFormat('l, d F Y');
+        $waktu_tugas = Carbon::today()->toDateString();
 
-        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktutugas'));
+        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktutugas', 'waktu_tugas'));
 
     }
 
@@ -284,26 +285,26 @@ class TugasController extends Controller
         }
 
         if ($status == 'SEMUA') {
-            $jobs = DB::table('tugas')
-                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'tugas.id_user', '=', 'users.id_user')
-                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
         } elseif ($status == 'SUDAH') {
-            $jobs = DB::table('tugas')
-                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'tugas.id_user', '=', 'users.id_user')
-                ->where('tugas.status', '=', 'SUDAH')
-                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->where('history.old_status', '=', 'SUDAH')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
         } else {
-            $jobs = DB::table('tugas')
-                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'tugas.id_user', '=', 'users.id_user')
-                ->where('tugas.status', '=', 'BELUM')
-                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->where('history.old_status', '=', 'BELUM')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
         }
@@ -316,47 +317,60 @@ class TugasController extends Controller
     public function print_laporan_pdf($waktutugas, $status)
     {
 //        dd($waktutugas, $status);
-        $from = $waktutugas . ' 00:00:00';
-        $until = $waktutugas . ' 24:00:00';
-        $waktu_tugas = Carbon::parse($from)->translatedFormat('l, d F Y');
+
+        if ($waktutugas == null) {
+            $from = Carbon::today()->toDateString() . ' 00:00:00';
+            $until = Carbon::today()->toDateString() . ' 24:00:00';
+            $waktu_tugas = Carbon::now()->translatedFormat('l, d F Y');
+        } else {
+            $from = $waktutugas . ' 00:00:00';
+            $until = $waktutugas . ' 24:00:00';
+            $waktu_tugas = Carbon::parse($from)->translatedFormat('l, d F Y');
+        }
+
+        if ($status == null) {
+            $status = 'SEMUA';
+        }
+
         if ($status == 'SEMUA') {
-            $jobs = DB::table('tugas')
-                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'tugas.id_user', '=', 'users.id_user')
-                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
         } elseif ($status == 'SUDAH') {
-            $jobs = DB::table('tugas')
-                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'tugas.id_user', '=', 'users.id_user')
-                ->where('tugas.status', '=', 'SUDAH')
-                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->where('history.old_status', '=', 'SUDAH')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
         } else {
-            $jobs = DB::table('tugas')
-                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'tugas.id_user', '=', 'users.id_user')
-                ->where('tugas.status', '=', 'BELUM')
-                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+            $jobs = DB::table('history')
+                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'history.id_cs', '=', 'users.id_user')
+                ->where('history.old_status', '=', 'BELUM')
+                ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
                 ->orderBy('ruang.nama_ruang', 'asc')
                 ->get();
         }
+
         $hari = Carbon::now()->translatedFormat('l');
         $tanggal = Carbon::now()->translatedFormat('d F Y');
         $waktu = Carbon::now()->translatedFormat('H:i');
         $pdf = app('dompdf.wrapper');
         $pdf->loadView('manager.print_laporan_pdf', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktu_tugas'));
 
-        return $pdf->download("laporan_tugas_{$waktu}.pdf");
+        return $pdf->download("laporan_tugas_{$waktutugas}.pdf");
         //return view('manager.print_laporan', compact('jobs', 'waktu'));
     }
 
-    public function print_laporan_excel()
+    public function print_laporan_excel($waktutugas, $status)
     {
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
-        return Excel::download(new PrintTugas(), "laporan_tugas_{$waktu}.xlsx");
+        return Excel::download(new PrintTugas($waktutugas, $status), "laporan_tugas_{$waktu}.xlsx");
     }
 }
