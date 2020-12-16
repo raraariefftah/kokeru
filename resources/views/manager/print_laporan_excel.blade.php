@@ -18,7 +18,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$job->nama_ruang}}</td>
             <td>{{$job->nama}}</td>
-            <td>{{$job->old_statusstatus}}</td>
+            <td>{{$job->old_status}}</td>
         </tr>
     @endforeach
 </table>

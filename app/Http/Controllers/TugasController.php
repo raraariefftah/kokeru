@@ -308,10 +308,10 @@ class TugasController extends Controller
         //return view('manager.print_laporan', compact('jobs', 'waktu'));
     }
 
-    public function print_laporan_excel()
+    public function print_laporan_excel($waktutugas, $status)
     {
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
-        return Excel::download(new PrintTugas(), "laporan_tugas_{$waktu}.xlsx");
+        return Excel::download(new PrintTugas($waktutugas, $status), "laporan_tugas_{$waktu}.xlsx");
     }
 }
