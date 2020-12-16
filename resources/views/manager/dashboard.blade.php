@@ -1,94 +1,95 @@
 @extends('manager.dashboard_manager')
 
 @section('content')
-<div class="container-fluid pt-2">
-    <!-- Content Row -->
-    <div class="row">
-        <!-- Jumlah CS -->
-        <div class="col-xl-3 col-md-6 mb-4 ">
-            <div class="card border-left-primary shadow h-100 py-2" style="background-color: rgb(49, 26, 56)">
-                <div class="card-body" style="background-color: rgb(49, 26, 56)">
-                    <div class="row no-gutters align-items-center ">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah CS</div>
-                            <div class="h5 mb-0 font-weight-bold text-white">{{$jumlahcs}}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Jumlah Ruang -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" style="background-color: rgb(212, 123, 153)">
-                <div class="card-body" style="background-color: rgb(212, 123, 153)">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Ruang</div>
-                            <div class="h5 mb-0 font-weight-bold text-white">{{$jumlahruang}}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-home fa-2x text-white"></i>
+    <div class="container-fluid pt-2">
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Jumlah CS -->
+            <div class="col-xl-3 col-md-6 mb-4 ">
+                <div class="card border-left-primary shadow h-100 py-2" style="background-color: rgb(49, 26, 56)">
+                    <div class="card-body" style="background-color: rgb(49, 26, 56)">
+                        <div class="row no-gutters align-items-center ">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah CS</div>
+                                <div class="h5 mb-0 font-weight-bold text-white">{{ $jumlahcs }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-users fa-2x text-white"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Jumlah Tugas -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" style="background-color: rgb(179, 150, 98)">
-                <div class="card-body" style="background-color: rgb(179, 150, 98)">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Tugas</div>
-                            <div class="h5 mb-0 font-weight-bold text-white">{{$jumlahtugas}}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-white"></i>
+            <!-- Jumlah Ruang -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2" style="background-color: rgb(212, 123, 153)">
+                    <div class="card-body" style="background-color: rgb(212, 123, 153)">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Ruang</div>
+                                <div class="h5 mb-0 font-weight-bold text-white">{{ $jumlahruang }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-home fa-2x text-white"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Persentase Tugas Selesai -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2 bg-info">
-                <div class="card-body bg-info">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Tugas Selesai</div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-dark">{{($tugasselesai/$jumlahtugas)*100}}%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-dark" role="progressbar" style="width: {{($tugasselesai/$jumlahtugas)*100}}%"
-                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            <!-- Jumlah Tugas -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2" style="background-color: rgb(179, 150, 98)">
+                    <div class="card-body" style="background-color: rgb(179, 150, 98)">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Tugas</div>
+                                <div class="h5 mb-0 font-weight-bold text-white">{{ $jumlahtugas }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persentase Tugas Selesai -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2 bg-info">
+                    <div class="card-body bg-info">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Tugas Selesai</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-dark">
+                                            {{ ($tugasselesai / $jumlahtugas) * 100 }}%</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress progress-sm mr-2">
+                                            <div class="progress-bar bg-dark" role="progressbar"
+                                                style="width: {{ ($tugasselesai / $jumlahtugas) * 100 }}%"
+                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-check fa-2x text-dark"></i>
+                            <div class="col-auto">
+                                <i class="fas fa-check fa-2x text-dark"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row pt-3 pr-3">
                 <div class="col-auto ml-auto">
-                    <form action="{{ url('/reset_tugas') }}"
-                          method="post"
-                          onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
+                    <form action="{{ url('/reset_tugas') }}" method="post"
+                        onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
                         @method('patch')
                         @csrf
                         <button class="btn btn-warning"><i class="nav-icon fas fa-undo">
@@ -100,8 +101,8 @@
                             Tambah </i></a>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple" href="{{url('manager/laporan')}}"><i
-                            class="nav-icon fas fa-file">
+                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple"
+                        href="{{ url('manager/laporan') }}"><i class="nav-icon fas fa-file">
                             Laporan </i></a>
                 </div>
             </div>
@@ -110,27 +111,55 @@
                 <div class="col text-center" style="color :rgb(63, 112, 206);">
                     <h4>Monitoring Kebersihan dan Kerapihan Ruang</h4>
                     <h4>Gedung Bersama Maju</h4>
-                    <h4 class="pt-2">Hari {{$hari}} Tanggal {{$tanggal}} Jam {{$waktu}} WIB</h4>
+                    <h4 class="pt-2">Hari {{ $hari }} Tanggal {{ $tanggal }} Jam {{ $waktu }} WIB</h4>
                 </div>
             </div>
             <!-- row -->
             <div class=" row mt-3 pl-2 pr-2">
                 @foreach ($jobs as $job)
-                <div class="col-lg-3 col-6">
-                    <!-- small card -->
-                    <div class="small-box text-center {{ $job->status == 'SUDAH' ? 'bg-success' : 'bg-warning' }}">
-                        <div class="inner">
-                            <h3>{{ $job->nama_ruang }}</h3>
-                            <p>{{ $job->status }}</p>
-                            <p>{{ $job->nama }}</p>
-                            <a href="#" class="box-link" style="color : {{$job->status == 'SUDAH'? 'white' : 'black'}}">&lt;&lt;detil&gt;&gt;</a>
+                    <div class="col-lg-3 col-6">
+                        <!-- small card -->
+                        <div class="small-box text-center {{ $job->status == 'SUDAH' ? 'bg-success' : 'bg-warning' }}">
+                            <div class="inner">
+                                <h3>{{ $job->nama_ruang }}</h3>
+                                <p>{{ $job->status }}</p>
+                                <p>{{ $job->nama }}</p>
+                                <a href="#exampleModal{{$job->id_tugas}}" class="box-link"
+                                    data-toggle="modal" data-target="#exampleModal{{$job->id_tugas}}"
+                                    style="color : {{ $job->status == 'SUDAH' ? 'white' : 'black' }}">&lt;&lt;detil&gt;&gt;</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
             <!-- /.container -->
         </div>
     </div>
-</div>
+    @foreach ($jobs as $job)
+        <div class="modal fade" id="exampleModal{{ $job->id_tugas }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Ruang {{ $job->nama_ruang }}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-offset-2">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <input type="text" name="name" class="form-control" value="{{ $job->id_tugas }}">
+                            </div>
+                            <input type="submit" value="Edit" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    </div>
 @endsection
