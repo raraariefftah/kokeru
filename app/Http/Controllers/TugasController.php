@@ -328,26 +328,20 @@ class TugasController extends Controller
 
         if ($status == 'SEMUA') {
             $jobs = DB::table('history')
-                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'history.id_cs', '=', 'users.id_user')
                 ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
-                ->orderBy('ruang.nama_ruang', 'asc')
+                ->orderBy('nama_ruang', 'asc')
                 ->get();
         } elseif ($status == 'SUDAH') {
             $jobs = DB::table('history')
-                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'history.id_cs', '=', 'users.id_user')
                 ->where('history.old_status', '=', 'SUDAH')
                 ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
-                ->orderBy('ruang.nama_ruang', 'asc')
+                ->orderBy('nama_ruang', 'asc')
                 ->get();
         } else {
             $jobs = DB::table('history')
-                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'history.id_cs', '=', 'users.id_user')
                 ->where('history.old_status', '=', 'BELUM')
                 ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
-                ->orderBy('ruang.nama_ruang', 'asc')
+                ->orderBy('nama_ruang', 'asc')
                 ->get();
         }
 //        dd($jobs);
@@ -376,26 +370,20 @@ class TugasController extends Controller
 
         if ($status == 'SEMUA') {
             $jobs = DB::table('history')
-                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'history.id_cs', '=', 'users.id_user')
                 ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
-                ->orderBy('ruang.nama_ruang', 'asc')
+                ->orderBy('nama_ruang', 'asc')
                 ->get();
         } elseif ($status == 'SUDAH') {
             $jobs = DB::table('history')
-                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'history.id_cs', '=', 'users.id_user')
                 ->where('history.old_status', '=', 'SUDAH')
                 ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
-                ->orderBy('ruang.nama_ruang', 'asc')
+                ->orderBy('nama_ruang', 'asc')
                 ->get();
         } else {
             $jobs = DB::table('history')
-                ->join('ruang', 'history.id_ruang', '=', 'ruang.id_ruang')
-                ->join('users', 'history.id_cs', '=', 'users.id_user')
                 ->where('history.old_status', '=', 'BELUM')
                 ->whereBetween('history.old_tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
-                ->orderBy('ruang.nama_ruang', 'asc')
+                ->orderBy('nama_ruang', 'asc')
                 ->get();
         }
 
