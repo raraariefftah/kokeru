@@ -31,7 +31,7 @@
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini" style="overflow:hidden">
+<body class="hold-transition sidebar-mini">
     @if(Auth::user()->role=='cs')
         {{abort(404)}}
     @endif
