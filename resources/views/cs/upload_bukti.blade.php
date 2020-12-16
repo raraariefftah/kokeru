@@ -35,7 +35,10 @@
                                 <img src="{{asset('/storage/'.$job->bukti1)}}" height="200px">
                             @endif
                         @endif
+                        <br /> <br />
+                        <label for="bukti1">Bukti 1 :</label>
                         <input type="file" id="bukti1" name="bukti1">
+                        <br /> <br /> <br />
 
                         @if($job->bukti2 != null)
                             @if(pathinfo(storage_path($job->bukti2), PATHINFO_EXTENSION) == 'mp4')
@@ -46,7 +49,10 @@
                                 <img src="{{asset('/storage/'.$job->bukti2)}}" height="200px">
                             @endif
                         @endif
+                        <br /> <br />
+                        <label for="bukti2">Bukti 2 :</label>
                         <input type="file" id="bukti2" name="bukti2">
+                        <br /> <br /> <br />
 
                         @if($job->bukti3 != null)
                             @if(pathinfo(storage_path($job->bukti3), PATHINFO_EXTENSION) == 'mp4')
@@ -57,7 +63,10 @@
                                 <img src="{{asset('/storage/'.$job->bukti3)}}" height="200px">
                             @endif
                         @endif
+                        <br /> <br />
+                        <label for="bukti3">Bukti 3 :</label>
                         <input type="file" id="bukti3" name="bukti3">
+                        <br /> <br /> <br />
 
                         @if($job->bukti4 != null)
                             @if(pathinfo(storage_path($job->bukti4), PATHINFO_EXTENSION) == 'mp4')
@@ -68,7 +77,10 @@
                                 <img src="{{asset('/storage/'.$job->bukti4)}}" height="200px">
                             @endif
                         @endif
+                        <br /> <br />
+                        <label for="bukti4">Bukti 4 :</label>
                         <input type="file" id="bukti4" name="bukti4">
+                        <br /> <br /> <br />
 
                         @if($job->bukti5 != null)
                             @if(pathinfo(storage_path($job->bukti5), PATHINFO_EXTENSION) == 'mp4')
@@ -79,11 +91,14 @@
                                 <img src="{{asset('/storage/'.$job->bukti5)}}" height="200px">
                             @endif
                         @endif
+                        <br /> <br />
+                        <label for="bukti5">Bukti 5 :</label>
                         <input type="file" id="bukti5" name="bukti5">
+                        <br /> <br />
                         <!-- /.card-body -->
                         <div class="form-group card-footer">
-                            <button type="submit" class="btn btn-success mr-2">Upload</button>
-                            <a href="{{route('dashboard_cs')}}" class="btn btn-danger">Kembali</a>
+                            <button type="submit" class="btn btn-primary mr-2">Upload</button>
+                            <a href="{{route('dashboard_cs')}}" class="btn btn-warning mr-2">Kembali</a>
                             <a href="{{ url('/customer_service/delete_bukti/' . $job->id_tugas)}}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
