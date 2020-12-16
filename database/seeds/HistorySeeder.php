@@ -20,8 +20,9 @@ class HistorySeeder extends Seeder
                 $ds = Carbon::create(2020, 12, 16, 0);
                 DB::table('history')->insert([
                     [
-                        'nama_cs' => DB::table('users')->where('id_user', $i+3)->value('nama'),
-                        'nama_ruang' => DB::table('ruang')->where('id_ruang', $i+1)->value('nama_ruang'),
+                        'id_tugas' => (string)$i+1,
+                        'id_cs' => (string)$i+3,
+                        'id_ruang' => (string)$i+1,
                         'old_status' => 'SUDAH',
                         'old_bukti1' => 'https://www.invistaperforms.org/wp-content/uploads/2014/11/Classroom-Desks.jpg',
                         'old_bukti2' => 'https://www.invistaperforms.org/wp-content/uploads/2014/11/Classroom-Desks.jpg',

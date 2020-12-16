@@ -149,6 +149,25 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
+                    <div class="row">
+                        <div class="col-auto">
+                            <form action="{{ url('/manager/edit_tugas/' . $job->id_tugas) }}" method="get">
+                                @csrf
+                                <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
+                            </form>
+                        </div>
+                        <div class="col-auto">
+                            <form action="{{ url('/manager/delete_tugas/' . $job->id_tugas) }}" method="post"
+                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="modal-body">
                         <div class="col-md-offset-2 text-center">
                             @if ($job->bukti1 != null)
@@ -197,19 +216,6 @@
                                 @endif
                             @endif
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="{{ url('/manager/edit_tugas/' . $job->id_tugas) }}" method="get">
-                            @csrf
-                            <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
-                        </form>
-                        <form action="{{ url('/manager/delete_tugas/' . $job->id_tugas) }}" method="post"
-                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
-                            @method('delete')
-                            @csrf
-                            <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
