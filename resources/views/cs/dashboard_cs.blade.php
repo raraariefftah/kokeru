@@ -11,8 +11,6 @@
                 <h4 class="pt-3">{{$waktu}} WIB</h4>
             </div>
         </div>
-
-
         <!-- row -->
         <div class=" row">
             @foreach ($cs_jobs as $job)
