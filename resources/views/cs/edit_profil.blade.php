@@ -44,7 +44,7 @@
                     <!-- /.card-body -->
                     <div class=" card-footer">
                         <button type="submit" class="btn btn-success mr-2">Ubah</button>
-                       
+                        <a href="#" class="btn btn-danger">Kembali</a>
                     </div>
                 </form>
             </div>
