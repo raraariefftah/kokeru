@@ -55,8 +55,9 @@ class TugasController extends Controller
 //        $rooms = DB::table('ruang')
 //            ->whereNotIn('id_ruang', DB::table('tugas')->select('id_ruang')->get())
 //            ->get();
-        $rooms = Ruang::whereNotIn('id_ruang', Tugas::select('id_ruang')->get())->get();
-//        dd($cs, $rooms);
+        $foreignruang = Tugas::select('id_ruang')->get();
+        $rooms = Ruang::whereNotIn('id_ruang', $foreignruang)->get();
+//        dd($foreruang);
 
         return view('manager.tambah_tugas', compact('cs', 'rooms'));
     }

@@ -15,10 +15,10 @@ class CreateTugasTable extends Migration
     {
         Schema::create('tugas', function (Blueprint $table) {
             $table->increments('id_tugas');
-            $table->integer('id_user')->unsigned();
-            $table->integer('id_ruang')->unsigned();
-            $table->foreign('id_user')->references('id_user')->on('users');
-            $table->foreign('id_ruang')->references('id_ruang')->on('ruang');
+            $table->integer('id_user')->unsigned()->nullable();
+            $table->integer('id_ruang')->unsigned()->nullable();
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('CASCADE');
+            $table->foreign('id_ruang')->references('id_ruang')->on('ruang')->onDelete('CASCADE');
             $table->enum('status', ['SUDAH', 'BELUM']);
             $table->string('bukti1')->nullable();
             $table->string('bukti2')->nullable();
