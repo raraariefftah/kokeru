@@ -39,6 +39,10 @@
                     <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                     Edit Profile
                 </a>
+                <a class="dropdown-item" href="{{url('/customer_service/ubah_password/'.Auth::user()->id_user)}}">
+                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Ubah Password
+                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal"
                    onclick="event.preventDefault();

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ManagerController extends Controller
 {
@@ -101,7 +102,14 @@ class ManagerController extends Controller
     }
 
     public function updatePassword(Request $request, $id)
-    {
+    {Validator::make($request->all(), [
+        'newpassword' => 'required|min:8',
+    ],
+        [
+            'newpassword.required' => 'Silahkan isi password baru',
+            'newpassword.min' => 'Password minimal 8 karakter',
+        ])->validate();
+
         $manager = User::find($id);
         $truepassword = Hash::check($request->password, $manager->password);
         if (($request->newpassword == $request->confirmnewpassword) && $truepassword) {

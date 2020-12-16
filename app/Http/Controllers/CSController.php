@@ -155,4 +155,42 @@ class CSController extends Controller
                 ->with('failed', 'Password yang Anda masukkan salah.')->withInput();
         }
     }
+
+    public function ubahPassword($id)
+    {
+        $title = 'Ubah Password';
+        $cs = User::find($id);
+
+        return view('cs.ubah_password', compact('cs', 'title'));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        Validator::make($request->all(), [
+            'newpassword' => 'required|min:8',
+        ],
+            [
+                'newpassword.required' => 'Silahkan isi password baru',
+                'newpassword.min' => 'Password minimal 8 karakter',
+            ])->validate();
+
+        $cs = User::find($id);
+        $truepassword = Hash::check($request->password, $cs->password);
+
+        if (($request->newpassword == $request->confirmnewpassword) && $truepassword) {
+            $cs->update([
+                    'password' => Hash::make($request->newpassword),
+                ]
+            );
+
+            return back()
+                ->with('success', 'Password berhasil diubah.');
+        } elseif (!$truepassword){
+            return back()
+                ->with('failed', 'Password yang Anda masukkan salah.')->withInput();
+        } else {
+            return back()
+                ->with('failed', 'Konfirmasi password salah, silahkan ulangi.')->withInput();
+        }
+    }
 }

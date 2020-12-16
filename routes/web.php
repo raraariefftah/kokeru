@@ -22,6 +22,8 @@ Route::patch('/customer_service/update_profil/{id}', 'CSController@update_profil
 Route::get('/customer_service/upload_bukti/{id}', 'TugasController@upload_bukti');
 Route::patch('/customer_service/update_bukti/{id}', 'TugasController@update_bukti');
 Route::get('/customer_service/delete_bukti/{id}', 'TugasController@delete_bukti');
+Route::get('/customer_service/ubah_password/{id}', 'CSController@ubahPassword');
+Route::patch('/customer_service/update_password/{id}', 'CSController@updatePassword');
 
 Route::get('/manager', 'ManagerController@index')->name('dashboard_manager');
 Route::get('/manager/daftar_ruang', 'RuangController@index')->name('daftar_ruang');
