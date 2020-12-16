@@ -44,7 +44,7 @@ Route::patch('/manager/update_password/{id}', 'ManagerController@updatePassword'
 Route::patch('/manager/reset_password_cs/{id}', 'ManagerController@resetPasswordCS');
 Route::get('/manager/laporan', 'TugasController@laporan');
 Route::get('/manager/laporan_daftar_tugas', 'TugasController@laporan_daftar_tugas');
-Route::get('/manager/print_laporan_pdf', 'TugasController@print_laporan_pdf');
+Route::get('/manager/print_laporan_pdf/{waktutugas}/{status}', 'TugasController@print_laporan_pdf');
 Route::get('/manager/print_laporan_excel', 'TugasController@print_laporan_excel');
 
 Route::patch('/reset_tugas', 'TugasController@reset_tugas');

@@ -33,7 +33,7 @@
     <div class="title">
         <center>
             <h4>Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h4>
-            <h4>Hari Kamis Tanggal 12 November 2020</h4> 
+            <h4>Hari {{$waktu_tugas}}</h4>
             <p>&lt;&lt;Tanggal Cetak {{$tanggal}} Jam {{$waktu}} WIB&gt;&gt;</p>
         </center>
     </div>
