@@ -43,8 +43,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class=" card-footer">
-                        <button type="submit" class="btn btn-success mr-2">Ubah</button>
-                        <a href="#" class="btn btn-danger">Kembali</a>
+                        <button type="submit" class="btn btn-success mr-2" onclick="return confirm('Apakah kamu yakin?')">Ubah</button>
+                        <a href="{{route('dashboard_cs')}}" class="btn btn-danger">Kembali</a>
                     </div>
                 </form>
             </div>

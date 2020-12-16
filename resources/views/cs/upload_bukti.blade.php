@@ -99,7 +99,7 @@
                         <div class="form-group card-footer">
                             <button type="submit" class="btn btn-primary mr-2">Upload</button>
                             <a href="{{route('dashboard_cs')}}" class="btn btn-warning mr-2">Kembali</a>
-                            <a href="{{ url('/customer_service/delete_bukti/' . $job->id_tugas)}}" class="btn btn-danger">Delete</a>
+                            <a href="{{ url('/customer_service/delete_bukti/' . $job->id_tugas)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                         </div>
                     </div>
                 </form>

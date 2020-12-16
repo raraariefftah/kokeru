@@ -71,8 +71,8 @@
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
                                             <div class="progress-bar bg-dark" role="progressbar"
-                                                 style="width: {{ ($tugasselesai / $jumlahtugas) * 100 }}%"
-                                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                style="width: {{ ($tugasselesai / $jumlahtugas) * 100 }}%"
+                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
             <div class="row pt-3 pr-3">
                 <div class="col-auto ml-auto">
                     <form action="{{ url('/reset_tugas') }}" method="post"
-                          onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
+                        onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
                         @method('patch')
                         @csrf
                         <button class="btn btn-danger"><i class="nav-icon fas fa-undo">
@@ -98,13 +98,12 @@
                     </form>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i
-                            class="nav-icon fas fa-plus">
+                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i class="nav-icon fas fa-plus">
                             Tambah </i></a>
                 </div>
                 <div class="col-auto">
                     <a type="button" class="btn btn-primary" style="background-color: rebeccapurple"
-                       href="{{ url('manager/laporan') }}"><i class="nav-icon fas fa-file">
+                        href="{{ url('manager/laporan') }}"><i class="nav-icon fas fa-file">
                             Laporan </i></a>
                 </div>
             </div>
@@ -126,9 +125,9 @@
                                 <h3>{{ $job->nama_ruang }}</h3>
                                 <p>{{ $job->status }}</p>
                                 <p>{{ $job->nama }}</p>
-                                <a href="#exampleModal{{$job->id_tugas}}" class="box-link"
-                                   data-toggle="modal" data-target="#exampleModal{{$job->id_tugas}}"
-                                   style="color : {{ $job->status == 'SUDAH' ? 'white' : 'black' }}">&lt;&lt;detil&gt;&gt;</a>
+                                <a href="#exampleModal{{ $job->id_tugas }}" class="box-link" data-toggle="modal"
+                                    data-target="#exampleModal{{ $job->id_tugas }}"
+                                    style="color : {{ $job->status == 'SUDAH' ? 'white' : 'black' }}">&lt;&lt;detil&gt;&gt;</a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +138,7 @@
     </div>
     @foreach ($jobs as $job)
         <div class="modal fade" id="exampleModal{{ $job->id_tugas }}" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -153,17 +152,14 @@
 
                     <div class="row">
                         <div class="col-auto">
-                            <form action="{{ url('/manager/edit_tugas/'. $job->id_tugas) }}"
-                                  method="get">
+                            <form action="{{ url('/manager/edit_tugas/' . $job->id_tugas) }}" method="get">
                                 @csrf
-                                <button class="btn btn-warning"><i
-                                        class="nav-icon fas fa-edit"></i></button>
+                                <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
                             </form>
                         </div>
                         <div class="col-auto">
-                            <form action="{{ url('/manager/delete_tugas/'. $job->id_tugas) }}"
-                                  method="post"
-                                  onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
+                            <form action="{{ url('/manager/delete_tugas/' . $job->id_tugas) }}" method="post"
+                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>

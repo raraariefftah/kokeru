@@ -242,10 +242,18 @@ class TugasController extends Controller
                 "status" => 'SUDAH',
             ]);
         }
-        return redirect()->back()
-            ->with([
-                'success' => 'File berhasil diupload.',
-            ]);
+        if($bukti1==null && $bukti2==null && $bukti3==null && $bukti4==null && $bukti5==null){
+            return redirect()->back()
+                ->with([
+                    'failed' => 'Tidak ada file yang diupload',
+                ]);
+        }
+        else{
+            return redirect()->back()
+                ->with([
+                    'success' => 'File berhasil diupload.',
+                ]);
+        }
     }
 
     public function reset_tugas()
