@@ -16,6 +16,19 @@
     <link rel="stylesheet" href="{{ asset('/style/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>
+        #carousel {
+            width: 100%;
+            height: 200px;
+            background-color: #FFFFFF;
+            overflow: auto;
+            text-align: center;
+        }
+
+        #carousel .slide {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
