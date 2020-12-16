@@ -24,7 +24,7 @@
                             <h3>{{ $job->nama_ruang }}</h3>
                             <p>{{ $job->status }}</p>
                             <p>{{ $job->nama }}</p>
-                            <a href="{{url('/customer_service/upload_bukti/'.$job->id_tugas)}}" class="box-link" style="color: white">&lt;&lt;detil&gt;&gt;</a>
+                            <a href="{{url('/customer_service/upload_bukti/'.$job->id_tugas)}}" class="box-link" style="color : {{$job->status == 'SUDAH'? 'white' : 'black'}}">&lt;&lt;detil&gt;&gt;</a>
                         </div>
                     </div>
                 </div>
