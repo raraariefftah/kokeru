@@ -51,6 +51,7 @@ class TugasController extends Controller
 
     public function create()
     {
+        $title = 'Tambah Tugas';
         $cs = User::where('role', 'cs')->get();
 //        $rooms = DB::table('ruang')
 //            ->whereNotIn('id_ruang', DB::table('tugas')->select('id_ruang')->get())
@@ -59,7 +60,7 @@ class TugasController extends Controller
         $rooms = Ruang::whereNotIn('id_ruang', $foreignruang)->get();
 //        dd($foreruang);
 
-        return view('manager.tambah_tugas', compact('cs', 'rooms'));
+        return view('manager.tambah_tugas', compact('cs', 'rooms', 'title'));
     }
 
     public function store(Request $request)
@@ -99,6 +100,8 @@ class TugasController extends Controller
 
     public function show()
     {
+        $title = 'Dashboard CS';
+
         $id = Auth::user()->id_user;
 
         $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
@@ -110,7 +113,7 @@ class TugasController extends Controller
                 ->where('tugas.id_user', '=', $id)
                 ->get();
 
-            return view('/cs/dashboard_cs', compact('cs_jobs', 'waktu'));
+            return view('/cs/dashboard_cs', compact('cs_jobs', 'waktu', 'title'));
         } else {
             return abort(404);
         }
@@ -118,6 +121,7 @@ class TugasController extends Controller
 
     public function edit($id)
     {
+        $title = 'Edit Tugas';
 //        dd($id);
         $job = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
@@ -128,7 +132,7 @@ class TugasController extends Controller
 
         $cs = User::where('role', 'cs')->get();
 
-        return view('manager.edit_tugas', compact('job', 'cs'));
+        return view('manager.edit_tugas', compact('job', 'cs', 'title'));
     }
 
     public function update(Request $request, $id)
@@ -158,9 +162,11 @@ class TugasController extends Controller
 
     public function upload_bukti($id_tugas)
     {
+        $title = 'Upload Bukti';
+
         $job = Tugas::find($id_tugas);
 
-        return view('cs.upload_bukti', compact('job'));
+        return view('cs.upload_bukti', compact('job', 'title'));
     }
 
     public function delete_bukti($id_tugas)
@@ -276,6 +282,8 @@ class TugasController extends Controller
 
     public function laporan()
     {
+        $title = 'Laporan Tugas';
+
         $jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
@@ -289,12 +297,13 @@ class TugasController extends Controller
         $waktutugas = Carbon::now()->translatedFormat('l, d F Y');
         $waktu_tugas = Carbon::today()->toDateString();
 
-        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktutugas', 'waktu_tugas'));
+        return view('manager.laporan', compact('jobs', 'title', 'hari', 'tanggal', 'waktu', 'waktutugas', 'waktu_tugas'));
 
     }
 
     public function laporan_daftar_tugas(Request $request)
     {
+        $title = 'Laporan Tugas';
 //        dd($request->all());
 //        dd($request->input('datepicker'));
         $tanggalprint = $request->datepicker;
@@ -336,7 +345,7 @@ class TugasController extends Controller
         }
 //        dd($jobs);
 
-        return view('manager.laporan_print', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktutugas', 'status', 'tanggalprint'));
+        return view('manager.laporan_print', compact('jobs', 'title', 'hari', 'tanggal', 'waktu', 'waktutugas', 'status', 'tanggalprint'));
 
     }
 

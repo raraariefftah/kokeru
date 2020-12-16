@@ -18,9 +18,9 @@ class CreateHistoryTable extends Migration
             $table->integer('id_tugas')->unsigned()->nullable();
             $table->integer('id_cs')->unsigned()->nullable();
             $table->integer('id_ruang')->unsigned()->nullable();
-            $table->foreign('id_cs')->references('id_user')->on('users');
-            $table->foreign('id_ruang')->references('id_ruang')->on('ruang');
-            $table->foreign('id_tugas')->references('id_tugas')->on('tugas');
+            $table->foreign('id_cs')->references('id_user')->on('users')->onDelete('CASCADE');
+            $table->foreign('id_ruang')->references('id_ruang')->on('ruang')->onDelete('CASCADE');
+            $table->foreign('id_tugas')->references('id_tugas')->on('tugas')->onDelete('CASCADE');
             $table->enum('old_status', ['SUDAH', 'BELUM']);
             $table->string('old_bukti1')->nullable();
             $table->string('old_bukti2')->nullable();

@@ -22,15 +22,18 @@ class CSController extends Controller
 //        $cs = DB::table('users')
 //            ->where('role', '=', 'cs')
 //            ->get();
+        $title = 'Daftar CS';
         $cs = User::where('role', 'cs')->get();
 
 
-        return view('manager.daftar_cs', compact('cs'));
+        return view('manager.daftar_cs', compact('cs', 'title'));
     }
 
     public function create()
     {
-        return view('manager.tambah_data_cs');
+        $title = 'Tambah CS';
+
+        return view('manager.tambah_data_cs', compact('title'));
     }
 
     public function store(Request $request)
@@ -83,9 +86,10 @@ class CSController extends Controller
 //            ->where('id_user', '=', $id)
 //            ->first();
 //        dd($cs);
+        $title = 'Edit Data CS';
         $cs = User::find($id);
 
-        return view('manager.edit_data_cs', compact('cs'));
+        return view('manager.edit_data_cs', compact('cs', 'title'));
     }
 
     public function update(Request $request, $id)
@@ -126,9 +130,10 @@ class CSController extends Controller
 //            ->where('id_user', '=', $id)
 //            ->first();
 //        dd($cs);
+        $title = 'Edit Profil';
         $cs = User::find($id);
 
-        return view('cs.edit_profil', compact('cs'));
+        return view('cs.edit_profil', compact('cs', 'title'));
     }
 
     public function update_profil(Request $request, $id)

@@ -17,14 +17,18 @@ class RuangController extends Controller
 
     public function index()
     {
-        $ruang = DB::table('ruang')->get();
+        $title = 'Daftar Ruang';
 
-        return view('manager.daftar_ruang', ['rooms' => $ruang]);
+        $rooms = DB::table('ruang')->get();
+
+        return view('manager.daftar_ruang', compact('rooms', 'title'));
     }
 
     public function create()
     {
-        return view('manager.tambah_ruang');
+        $title = 'Tambah Ruang';
+
+        return view('manager.tambah_ruang', compact('title'));
     }
 
     public function store(Request $request)
@@ -53,9 +57,10 @@ class RuangController extends Controller
 
     public function edit($id)
     {
+        $title = 'Edit Ruang';
         $ruang = Ruang::find($id);
 
-        return view('manager.edit_ruang', compact('ruang'));
+        return view('manager.edit_ruang', compact('ruang', 'title'));
     }
 
     public function update(Request $request, $id)
