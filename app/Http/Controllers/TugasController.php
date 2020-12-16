@@ -262,9 +262,8 @@ class TugasController extends Controller
 
         foreach ($jobs as $job) {
             DB::table('history')->insert([
-                'id_tugas' => $job->id_tugas,
-                'id_cs' => $job->id_user,
-                'id_ruang' => $job->id_ruang,
+                'nama_cs' => DB::table('users')->where('id_user',$job->id_user)->value('nama'),
+                'nama_ruang' => DB::table('ruang')->where('id_ruang',$job->id_ruang)->value('nama_ruang'),
                 'old_status' => $job->status,
                 'old_bukti1' => $job->bukti1,
                 'old_bukti2' => $job->bukti2,
