@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Tugas;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +26,33 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $jobs = Tugas::all();
+
+            foreach ($jobs as $job) {
+                DB::table('history')->insert([
+                    'id_tugas' => $job->id_tugas,
+                    'id_cs' => $job->id_user,
+                    'id_ruang' => $job->id_ruang,
+                    'old_status' => $job->status,
+                    'old_bukti1' => $job->bukti1,
+                    'old_bukti2' => $job->bukti2,
+                    'old_bukti3' => $job->bukti3,
+                    'old_bukti4' => $job->bukti4,
+                    'old_bukti5' => $job->bukti5,
+                    'old_tanggal_penugasan' => $job->tanggal_penugasan,
+                    'old_tanggal_selesai' => $job->tanggal_selesai,
+                ]);
+                $job->update([
+                    'status' => 'BELUM',
+                    'bukti1' => null,
+                    'bukti2' => null,
+                    'bukti3' => null,
+                    'bukti4' => null,
+                    'bukti5' => null,
+                ]);
+            }
+        })->daily();
     }
 
     /**
@@ -34,7 +62,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
