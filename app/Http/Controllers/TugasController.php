@@ -118,17 +118,42 @@ class TugasController extends Controller
 
     public function edit($id)
     {
-        //
+//        dd($id);
+        $job = DB::table('tugas')
+            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+            ->join('users', 'tugas.id_user', '=', 'users.id_user')
+            ->where('tugas.id_tugas', '=', $id)
+            ->get();
+//        dd($job);
+
+        $cs = User::where('role', 'cs')->get();
+
+        return view('manager.edit_tugas', compact('job', 'cs'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $job = Tugas::find($id);
+
+        $cs = User::where('nama', $request->nama_cs)->first();
+        $iduser = $cs['id_user'];
+//        dd($iduser, $request->status);
+
+        $job->update([
+                'id_user' => $iduser,
+                'status' => $request->status,
+            ]
+        );
+        return back()
+            ->with('success', 'Tugas berhasil diubah.');
     }
 
     public function destroy($id)
     {
-        //
+        $job = Tugas::where('id_ruang',$id);
+        $job->delete();
+        return back()
+            ->with('success', 'Tugas berhasil dihapus.');
     }
 
     public function upload_bukti($id_tugas)

@@ -142,58 +142,87 @@
              aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="col-md-offset-2">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Ruang {{ $job->nama_ruang }}
-                            </h5>
-                        </div>
-                    </div>
                     <div class="modal-header">
-                        @if($job->bukti1 != null)
-                            <div id="carousel">
-                                @if(session('extensionfile') == 'mp4')
-                                    <video height="300px" controls>
-                                        <source src="{{asset('/storage/'.$job->bukti1)}}" type="video/mp4">
-                                    </video>
-                                @else
-                                    <div class="slide"><img src="{{asset('/storage/'.$job->bukti1)}}" height="200px">
-                                    </div>
-                                    @if($job->bukti2 != null)
-                                        <div class="slide"><img src="{{asset('/storage/'.$job->bukti2)}}"
-                                                                height="200px"></div>
-                                        @if($job->bukti3 != null)
-                                            <div class="slide"><img src="{{asset('/storage/'.$job->bukti3)}}"
-                                                                    height="200px"></div>
-                                            @if($job->bukti4 != null)
-                                                <div class="slide"><img src="{{asset('/storage/'.$job->bukti4)}}"
-                                                                        height="200px"></div>
-                                                @if($job->bukti5 != null)
-                                                    <div class="slide"><img src="{{asset('/storage/'.$job->bukti5)}}"
-                                                                            height="200px"></div>
-                                                @endif
-                                            @endif
-                                        @endif
-                                    @endif
-                                @endif
-                            </div>
-                        @endif
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Ruang {{ $job->nama_ruang }}
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
+                    <div class="row">
+                        <div class="col-auto">
+                            <form action="{{ url('/manager/edit_tugas/'. $job->id_tugas) }}"
+                                  method="get">
+                                @csrf
+                                <button class="btn btn-warning"><i
+                                        class="nav-icon fas fa-edit"></i></button>
+                            </form>
+                        </div>
+                        <div class="col-auto">
+                            <form action="{{ url('/manager/delete_tugas/'. $job->id_tugas) }}"
+                                  method="post"
+                                  onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?')">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="modal-body">
-                        <div class="col-md-offset-2">
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <input type="text" name="name" class="form-control" value="{{ $job->id_tugas }}">
-                            </div>
-                            <input type="submit" value="Edit" class="btn btn-success">
+                        <div class="col-md-offset-2 text-center">
+                            @if ($job->bukti1 != null)
+                                @if (pathinfo(storage_path($job->bukti1), PATHINFO_EXTENSION) == 'mp4')
+                                    <video height="300px" controls>
+                                        <source src="{{ asset('/storage/' . $job->bukti1) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset('/storage/' . $job->bukti1) }}" height="200px">
+                                @endif
+                            @endif
+                            @if ($job->bukti2 != null)
+                                @if (pathinfo(storage_path($job->bukti2), PATHINFO_EXTENSION) == 'mp4')
+                                    <video height="300px" controls>
+                                        <source src="{{ asset('/storage/' . $job->bukti2) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset('/storage/' . $job->bukti2) }}" height="200px">
+                                @endif
+                            @endif
+                            @if ($job->bukti3 != null)
+                                @if (pathinfo(storage_path($job->bukti3), PATHINFO_EXTENSION) == 'mp4')
+                                    <video height="300px" controls>
+                                        <source src="{{ asset('/storage/' . $job->bukti3) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset('/storage/' . $job->bukti3) }}" height="200px">
+                                @endif
+                            @endif
+                            @if ($job->bukti4 != null)
+                                @if (pathinfo(storage_path($job->bukti4), PATHINFO_EXTENSION) == 'mp4')
+                                    <video height="300px" controls>
+                                        <source src="{{ asset('/storage/' . $job->bukti4) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset('/storage/' . $job->bukti4) }}" height="200px">
+                                @endif
+                            @endif
+                            @if ($job->bukti5 != null)
+                                @if (pathinfo(storage_path($job->bukti5), PATHINFO_EXTENSION) == 'mp4')
+                                    <video height="300px" controls>
+                                        <source src="{{ asset('/storage/' . $job->bukti5) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset('/storage/' . $job->bukti5) }}" height="200px">
+                                @endif
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
-        </div>
+    @endforeach
 @endsection

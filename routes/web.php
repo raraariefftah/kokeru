@@ -34,10 +34,13 @@ Route::post('/manager/store_data_ruang', 'RuangController@store')->name('ruang_s
 Route::post('/manager/store_data_tugas', 'TugasController@store')->name('tugas_store');
 Route::get('/manager/edit_data_cs/{id}', 'CSController@edit')->name('edit_data_cs');
 Route::get('/manager/edit_ruang/{id}', 'RuangController@edit')->name('edit_ruang');
+Route::get('/manager/edit_tugas/{id}', 'TugasController@edit')->name('edit_tugas');
 Route::patch('/manager/update_data_cs/{id}', 'CSController@update');
 Route::patch('/manager/update_ruang/{id}', 'RuangController@update');
+Route::patch('/manager/update_tugas/{id}', 'TugasController@update');
 Route::delete('manager/delete_data_cs/{id}', 'CSController@destroy');
 Route::delete('manager/delete_ruang/{id}', 'RuangController@destroy');
+Route::delete('manager/delete_tugas/{id}', 'TugasController@destroy');
 Route::get('/manager/edit_profil/{id}', 'ManagerController@edit');
 Route::patch('/manager/update_profil/{id}', 'ManagerController@update');
 Route::get('/manager/ubah_password/{id}', 'ManagerController@ubahPassword');
