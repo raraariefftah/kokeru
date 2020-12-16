@@ -103,7 +103,7 @@
                             Tambah </i></a>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary"
+                    <a type="button" class="btn btn-primary" style="background-color: rebeccapurple"
                        href="{{ url('manager/laporan') }}"><i class="nav-icon fas fa-file">
                             Laporan </i></a>
                 </div>
