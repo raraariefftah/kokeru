@@ -6,7 +6,7 @@
         <!-- left column -->
         <div class="col-md-6">
             @if (session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success text-dark" style="background-color: rgb(113, 196, 154);">
                     {{ session('success') }}
                 </div>
             @elseif(session('failed'))
