@@ -1,6 +1,6 @@
 <h5>Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama Maju</h5>
-<h5>Hari Kamis Tanggal 12 November 2020 Jam 07.11 WIB</h5>
-<p>&lt;&lt;Dicetak pada {{$waktu}} WIB&gt;&gt;</p>
+<h4>Hari {{$waktu_tugas}}</h4>
+<p>&lt;&lt;Tanggal Cetak {{$tanggal}} Jam {{$waktu}} WIB&gt;&gt;</p>
 
 
 <table>
@@ -18,7 +18,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$job->nama_ruang}}</td>
             <td>{{$job->nama}}</td>
-            <td>{{$job->status}}</td>
+            <td>{{$job->old_statusstatus}}</td>
         </tr>
     @endforeach
 </table>

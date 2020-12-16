@@ -66,13 +66,13 @@
                         <div class="form-row align-items-center pt-3 pl-4">
                             <div class="col-auto">
                                 <a type="button" class="btn btn-primary"
-                                   href="{{url('manager/print_laporan_pdf/')}}">
+                                   href="{{url('manager/print_laporan_pdf/'.$waktu_tugas.'/SUDAH')}}">
                                     <i class="nav-icon fas fa-file">
                                         Print as PDF </i></a>
                             </div>
                             <div class="col-auto">
                                 <a type="button" class="btn btn-primary"
-                                   href="{{url('manager/print_laporan_excel/')}}"
+                                   href="{{url('manager/print_laporan_excel/'.$waktutugas.'/SUDAH')}}"
                                    style="background-color: rgb(36, 119, 47)">
                                     <i class="nav-icon fas fa-file">
                                         Print as Excel </i></a>
