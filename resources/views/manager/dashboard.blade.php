@@ -92,7 +92,7 @@
                         onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
                         @method('patch')
                         @csrf
-                        <button class="btn btn-warning"><i class="nav-icon fas fa-undo">
+                        <button class="btn btn-danger"><i class="nav-icon fas fa-undo">
                                 Reset </i></button>
                     </form>
                 </div>
