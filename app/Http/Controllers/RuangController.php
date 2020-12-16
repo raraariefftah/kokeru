@@ -61,6 +61,7 @@ class RuangController extends Controller
     public function update(Request $request, $id)
     {
 
+
         $ruang = Ruang::find($id);
         $ruang->update([
                 'nama_ruang' => $request->nama,
