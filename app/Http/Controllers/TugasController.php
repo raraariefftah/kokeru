@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -35,7 +36,17 @@ class TugasController extends Controller
         $waktu = Carbon::now()->translatedFormat('H:i');
 
 //        var_dump($tugas);
-        return view('awal', compact('jobs','hari', 'tanggal', 'waktu'));
+        if(Auth::check()){
+            if(Auth::user()->role=='manager'){
+                return redirect()->route('dashboard_manager');
+            }
+            else{
+                return redirect()->route('dashboard_cs');
+            }
+        }
+        else{
+            return view('awal', compact('jobs','hari', 'tanggal', 'waktu'));
+        }
     }
 
     public function create()
@@ -127,34 +138,82 @@ class TugasController extends Controller
         return view('cs.upload_bukti', compact('job'));
     }
 
+    public function delete_bukti($id_tugas)
+    {
+        $job = Tugas::find($id_tugas);
+        $job->update([
+            "bukti1" => null,
+            "bukti2" => null,
+            "bukti3" => null,
+            "bukti4" => null,
+            "bukti5" => null,
+        ]);
+        $job->update([
+            "status" => 'BELUM',
+        ]);
+        return redirect()->back()
+        ->with([
+            'success' => 'File berhasil dihapus.',
+        ]);
+    }
+
     public function update_bukti(Request $request, $id_tugas)
     {
-//        Validator::make($request->all(), [
-//            'bukti[]' => 'required|file',
-//        ],
-//            [
-//                'bukti[].required' => 'Silahkan pilih file.'
-//            ])->validate();
-
+        $bukti1 = $request->bukti1;
+        $bukti2 = $request->bukti2;
+        $bukti3 = $request->bukti3;
+        $bukti4 = $request->bukti4;
+        $bukti5 = $request->bukti5;
         $job = Tugas::find($id_tugas);
         $i = 0;
-        foreach ($request->file('bukti') as $file) {
-            $i++;
-            $bukti = $file->store('images', 'public');
+        if($bukti1!=null){
+            $bukti = $bukti1->store('images', 'public');
             $job->update([
-                "bukti{$i}" => $bukti,
+                    "bukti1" => $bukti,
+            ]);
+            $bukti1 = $job->bukti1;
+            $i++;
+        }
+        if($bukti2!=null){
+            $bukti = $bukti2->store('images', 'public');
+            $job->update([
+                    "bukti2" => $bukti,
+            ]);
+            $bukti2 = $job->bukti2;
+            $i++;
+        }
+        if($bukti3!=null){
+            $bukti = $bukti3->store('images', 'public');
+            $job->update([
+                    "bukti3" => $bukti,
+            ]);
+            $bukti3 = $job->bukti3;
+            $i++;
+        }
+        if($bukti4!=null){
+            $bukti = $bukti4->store('images', 'public');
+            $job->update([
+                    "bukti4" => $bukti,
+            ]);
+            $bukti4 = $job->bukti4;
+            $i++;
+        }
+        if($bukti5!=null){
+            $bukti = $bukti5->store('images', 'public');
+            $job->update([
+                    "bukti5" => $bukti,
+            ]);
+            $bukti5 = $job->bukti5;
+            $i++;
+        }
+        if($i>0){
+            $job->update([
+                "status" => 'SUDAH',
             ]);
         }
-        $job->update([
-            "status" => 'SUDAH',
-        ]);
-
-        $extensionfile = $request->bukti[0]->extension();
-//        dd($extensionfile);
         return redirect()->back()
             ->with([
                 'success' => 'File berhasil diupload.',
-                'extensionfile' => $extensionfile,
             ]);
     }
 
