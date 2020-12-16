@@ -20,6 +20,8 @@ class ManagerController extends Controller
 
     public function index()
     {
+        $title = 'Dashboard Manager';
+
         $jobs = DB::table('tugas')
             ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
             ->join('users', 'tugas.id_user', '=', 'users.id_user')
@@ -35,7 +37,7 @@ class ManagerController extends Controller
         $tugasselesai = Tugas::where('status', 'SUDAH')->count();
 
         if(Auth::user()->role=='manager'){
-            return view('manager.dashboard', compact('jobs', 'hari', 'tanggal', 'waktu', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
+            return view('manager.dashboard', compact('jobs', 'title', 'hari', 'tanggal', 'waktu', 'jumlahcs', 'jumlahruang', 'jumlahtugas', 'tugasselesai'));
         }
         else{
             return abort(404);
@@ -59,9 +61,10 @@ class ManagerController extends Controller
 
     public function edit($id)
     {
+        $title = 'Edit Profil Manager';
         $manager = User::find($id);
 
-        return view('manager.edit_profil', compact('manager'));
+        return view('manager.edit_profil', compact('manager', 'title'));
     }
 
     public function update(Request $request, $id)
@@ -91,9 +94,10 @@ class ManagerController extends Controller
 
     public function ubahPassword($id)
     {
+        $title = 'Ubah Password';
         $manager = User::find($id);
 
-        return view('manager.ubah_password', compact('manager'));
+        return view('manager.ubah_password', compact('manager', 'title'));
     }
 
     public function updatePassword(Request $request, $id)
