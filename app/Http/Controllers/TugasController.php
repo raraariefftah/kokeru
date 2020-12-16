@@ -128,12 +128,12 @@ class TugasController extends Controller
 
     public function update_bukti(Request $request, $id_tugas)
     {
-        Validator::make($request->all(), [
-            'bukti[]' => 'required|file',
-        ],
-            [
-                'bukti[].required' => 'Silahkan pilih file.'
-            ])->validate();
+//        Validator::make($request->all(), [
+//            'bukti[]' => 'required|file',
+//        ],
+//            [
+//                'bukti[].required' => 'Silahkan pilih file.'
+//            ])->validate();
 
         $job = Tugas::find($id_tugas);
         $i = 0;
@@ -211,6 +211,7 @@ class TugasController extends Controller
     {
 //        dd($request->all());
 //        dd($request->input('datepicker'));
+        $tanggalprint = $request->datepicker;
         $from = $request->datepicker . ' 00:00:00';
         $until = $request->datepicker . ' 24:00:00';
         $status = $request->status;
@@ -249,22 +250,45 @@ class TugasController extends Controller
         }
 //        dd($jobs);
 
-        return view('manager.laporan', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktugas'));
+        return view('manager.laporan_print', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktutugas', 'status', 'tanggalprint'));
 
     }
 
-    public function print_laporan_pdf()
+    public function print_laporan_pdf($waktutugas, $status)
     {
-        $jobs = DB::table('tugas')
-            ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
-            ->join('users', 'tugas.id_user', '=', 'users.id_user')
-            ->orderBy('ruang.nama_ruang', 'asc')
-            ->get();
+//        dd($waktutugas, $status);
+        $from = $waktutugas . ' 00:00:00';
+        $until = $waktutugas . ' 24:00:00';
+        $waktu_tugas = Carbon::parse($from)->translatedFormat('l, d F Y');
+        if ($status == 'SEMUA') {
+            $jobs = DB::table('tugas')
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        } elseif ($status == 'SUDAH') {
+            $jobs = DB::table('tugas')
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->where('tugas.status', '=', 'SUDAH')
+                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        } else {
+            $jobs = DB::table('tugas')
+                ->join('ruang', 'tugas.id_ruang', '=', 'ruang.id_ruang')
+                ->join('users', 'tugas.id_user', '=', 'users.id_user')
+                ->where('tugas.status', '=', 'BELUM')
+                ->whereBetween('tugas.tanggal_penugasan', [Carbon::parse($from), Carbon::parse($until)])
+                ->orderBy('ruang.nama_ruang', 'asc')
+                ->get();
+        }
         $hari = Carbon::now()->translatedFormat('l');
         $tanggal = Carbon::now()->translatedFormat('d F Y');
         $waktu = Carbon::now()->translatedFormat('H:i');
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('manager.print_laporan', compact('jobs', 'hari', 'tanggal', 'waktu'));
+        $pdf->loadView('manager.print_laporan_pdf', compact('jobs', 'hari', 'tanggal', 'waktu', 'waktu_tugas'));
 
         return $pdf->download("laporan_tugas_{$waktu}.pdf");
         //return view('manager.print_laporan', compact('jobs', 'waktu'));

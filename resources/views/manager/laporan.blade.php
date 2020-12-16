@@ -45,24 +45,39 @@
                     <h3 class="card-title">Laporan Daftar Tugas</h3>
                 </div>
 
-                <form>
-                    <div class="form-row align-items-center pt-3 pl-4">
-                        <div class="col-auto">
-                            <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_pdf')}}"><i
-                                    class="nav-icon fas fa-file">
-                                    Print as PDF </i></a>
-                        </div>
-                        <div class="col-auto">
-                            <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_excel')}}"
-                               style="background-color: rgb(36, 119, 47)"><i class="nav-icon fas fa-file">
-                                    Print as Excel </i></a>
-                        </div>
-                    </div>
-                </form>
+                {{--                <form>--}}
+                {{--                    <div class="form-row align-items-center pt-3 pl-4">--}}
+                {{--                        <div class="col-auto">--}}
+                {{--                            <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_pdf')}}"><i--}}
+                {{--                                    class="nav-icon fas fa-file">--}}
+                {{--                                    Print as PDF </i></a>--}}
+                {{--                        </div>--}}
+                {{--                        <div class="col-auto">--}}
+                {{--                            <a type="button" class="btn btn-primary" href="{{url('manager/print_laporan_excel')}}"--}}
+                {{--                               style="background-color: rgb(36, 119, 47)"><i class="nav-icon fas fa-file">--}}
+                {{--                                    Print as Excel </i></a>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </form>--}}
 
                 {{-- pilih tanggal --}}
                 <form role="form" action="{{ url('/manager/laporan_daftar_tugas') }}" method="get">
                     @csrf
+                        <div class="form-row align-items-center pt-3 pl-4">
+                            <div class="col-auto">
+                                <a type="button" class="btn btn-primary"
+                                   href="{{url('manager/print_laporan_pdf/')}}">
+                                    <i class="nav-icon fas fa-file">
+                                        Print as PDF </i></a>
+                            </div>
+                            <div class="col-auto">
+                                <a type="button" class="btn btn-primary"
+                                   href="{{url('manager/print_laporan_excel/')}}"
+                                   style="background-color: rgb(36, 119, 47)">
+                                    <i class="nav-icon fas fa-file">
+                                        Print as Excel </i></a>
+                            </div>
+                        </div>
                     <div class="row pt-3 ml-3">
                         <!-- kolom -->
                         <div class="col-md-2">
@@ -92,51 +107,54 @@
                     <div class="form-row align-items-center pt-3 pl-4">
                         <div class="col-auto">
                             <button class="btn btn-warning"><b>Tampil </b></button>
+                        </div>
+                    </div>
                 </form>
-            </div>
 
 
-            {{-- Table laporan --}}
-            <div class="container-fluid pr-4">
-                <div class="row pt-4 text-center">
-                    <div class="col">
-                        <h5 style="font-weight: bold">Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama
-                            Maju</h5>
-                        <h5 style="font-weight: bold">Hari {{$waktutugas}}</h5>
-                        <p>&lt;&lt;Tanggal Cetak {{$tanggal}} Jam {{$waktu}} WIB&gt;&gt;</p>
+                {{-- Table laporan --}}
+                <div class="container-fluid pr-4">
+                    <div class="row pt-4 text-center">
+                        <div class="col">
+                            <h5 style="font-weight: bold">Laporan Harian Kebersihan dan Kerapihan Ruangan Gedung Bersama
+                                Maju</h5>
+                            <h5 style="font-weight: bold">Hari {{$waktutugas}}</h5>
+                            <p>&lt;&lt;Tanggal Cetak {{$tanggal}} Jam {{$waktu}} WIB&gt;&gt;</p>
+                        </div>
                     </div>
-                </div>
 
-                <table id="table1" class="table table-bordered table-striped ">
-                    <thead>
-                    <tr class="text-center">
-                        <th width="5px">No</th>
-                        <th>Ruang</th>
-                        <th>Nama CS</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($jobs as $job)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$job->nama_ruang}}</td>
-                            <td>{{$job->nama}}</td>
-                            <td>{{$job->status}}</td>
+                    <table id="table1" class="table table-bordered table-striped ">
+                        <thead>
+                        <tr class="text-center">
+                            <th width="5px">No</th>
+                            <th>Ruang</th>
+                            <th>Nama CS</th>
+                            <th>Status</th>
                         </tr>
-                    @endforeach
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($jobs as $job)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$job->nama_ruang}}</td>
+                                <td>{{$job->nama}}</td>
+                                <td>{{$job->status}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
 
-                <div class="row">
-                    <div class="col" style="margin-left: 80%">
-                        <p>Approval</p>
-                        <p>&lt;&lt;ttd&gt;&gt;</p>
-                        <p>Nama Manajer</p>
-                        <p>Manajer</p>
+                    <div class="row">
+                        <div class="col" style="margin-left: 80%">
+                            <p>Approval</p>
+                            <p>&lt;&lt;ttd&gt;&gt;</p>
+                            <p>Nama Manajer</p>
+                            <p>Manajer</p>
+                        </div>
                     </div>
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
             </div>
+
         </div>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
