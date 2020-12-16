@@ -65,13 +65,14 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-dark">
-                                            {{ ($tugasselesai / $jumlahtugas) * 100 }}%</div>
+                                            {{ ($tugasselesai / $jumlahtugas) * 100 }}%
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm mr-2">
                                             <div class="progress-bar bg-dark" role="progressbar"
-                                                style="width: {{ ($tugasselesai / $jumlahtugas) * 100 }}%"
-                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                 style="width: {{ ($tugasselesai / $jumlahtugas) * 100 }}%"
+                                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +90,7 @@
             <div class="row pt-3 pr-3">
                 <div class="col-auto ml-auto">
                     <form action="{{ url('/reset_tugas') }}" method="post"
-                        onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
+                          onsubmit="return confirm('Apakah Anda yakin ingin mereset data tugas?')">
                         @method('patch')
                         @csrf
                         <button class="btn btn-danger"><i class="nav-icon fas fa-undo">
@@ -97,12 +98,13 @@
                     </form>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i class="nav-icon fas fa-plus">
+                    <a type="button" class="btn btn-primary" href="/manager/tambah_tugas"><i
+                            class="nav-icon fas fa-plus">
                             Tambah </i></a>
                 </div>
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary" 
-                        href="{{ url('manager/laporan') }}"><i class="nav-icon fas fa-file">
+                    <a type="button" class="btn btn-primary"
+                       href="{{ url('manager/laporan') }}"><i class="nav-icon fas fa-file">
                             Laporan </i></a>
                 </div>
             </div>
@@ -125,8 +127,8 @@
                                 <p>{{ $job->status }}</p>
                                 <p>{{ $job->nama }}</p>
                                 <a href="#exampleModal{{$job->id_tugas}}" class="box-link"
-                                    data-toggle="modal" data-target="#exampleModal{{$job->id_tugas}}"
-                                    style="color : {{ $job->status == 'SUDAH' ? 'white' : 'black' }}">&lt;&lt;detil&gt;&gt;</a>
+                                   data-toggle="modal" data-target="#exampleModal{{$job->id_tugas}}"
+                                   style="color : {{ $job->status == 'SUDAH' ? 'white' : 'black' }}">&lt;&lt;detil&gt;&gt;</a>
                             </div>
                         </div>
                     </div>
@@ -137,13 +139,45 @@
     </div>
     @foreach ($jobs as $job)
         <div class="modal fade" id="exampleModal{{ $job->id_tugas }}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="col-md-offset-2">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Ruang {{ $job->nama_ruang }}
+                            </h5>
+                        </div>
+                    </div>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            Ruang {{ $job->nama_ruang }}
-                        </h5>
+                        @if($job->bukti1 != null)
+                            <div id="carousel">
+                                @if(session('extensionfile') == 'mp4')
+                                    <video height="300px" controls>
+                                        <source src="{{asset('/storage/'.$job->bukti1)}}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <div class="slide"><img src="{{asset('/storage/'.$job->bukti1)}}" height="200px">
+                                    </div>
+                                    @if($job->bukti2 != null)
+                                        <div class="slide"><img src="{{asset('/storage/'.$job->bukti2)}}"
+                                                                height="200px"></div>
+                                        @if($job->bukti3 != null)
+                                            <div class="slide"><img src="{{asset('/storage/'.$job->bukti3)}}"
+                                                                    height="200px"></div>
+                                            @if($job->bukti4 != null)
+                                                <div class="slide"><img src="{{asset('/storage/'.$job->bukti4)}}"
+                                                                        height="200px"></div>
+                                                @if($job->bukti5 != null)
+                                                    <div class="slide"><img src="{{asset('/storage/'.$job->bukti5)}}"
+                                                                            height="200px"></div>
+                                                @endif
+                                            @endif
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                        @endif
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -160,6 +194,6 @@
                 </div>
             </div>
         </div>
-    @endforeach
-    </div>
+        @endforeach
+        </div>
 @endsection
