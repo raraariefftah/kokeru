@@ -48,7 +48,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class=" card-footer">
-                            <button type="submit" class="btn btn-success mr-2" onclick="return confirm('Are you sure?')">Ubah</button>
+                            <button type="submit" class="btn btn-success mr-2" onclick="return confirm('Apakah kamu yakin?')">Ubah</button>
                             <a href="{{ route('dashboard_manager') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>

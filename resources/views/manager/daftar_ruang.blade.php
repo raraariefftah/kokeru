@@ -75,4 +75,6 @@
                 <!-- /.card-body -->
             </div>
         </div>
-        @endsection
+    </div>
+</div>
+@endsection
