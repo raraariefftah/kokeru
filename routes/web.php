@@ -40,6 +40,7 @@ Route::patch('/manager/update_ruang/{id}', 'RuangController@update');
 Route::patch('/manager/update_tugas/{id}', 'TugasController@update');
 Route::delete('manager/delete_data_cs/{id}', 'CSController@destroy');
 Route::delete('manager/delete_ruang/{id}', 'RuangController@destroy');
+Route::delete('manager/delete_tugas/{id}', 'TugasController@destroy');
 Route::get('/manager/edit_profil/{id}', 'ManagerController@edit');
 Route::patch('/manager/update_profil/{id}', 'ManagerController@update');
 Route::get('/manager/ubah_password/{id}', 'ManagerController@ubahPassword');

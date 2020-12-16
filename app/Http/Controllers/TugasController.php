@@ -150,7 +150,10 @@ class TugasController extends Controller
 
     public function destroy($id)
     {
-        //
+        $job = Tugas::where('id_ruang',$id);
+        $job->delete();
+        return back()
+            ->with('success', 'Tugas berhasil dihapus.');
     }
 
     public function upload_bukti($id_tugas)
