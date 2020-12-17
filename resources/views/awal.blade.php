@@ -56,47 +56,47 @@
                                 <div class="col-md-offset-2 text-center">
                                     @if ($job->bukti1 != null)
                                         @if (pathinfo(storage_path($job->bukti1), PATHINFO_EXTENSION) == 'mp4')
-                                            <video height="300px" controls>
+                                            <video height="200px" controls>
                                                 <source src="{{ asset('/storage/' . $job->bukti1) }}" type="video/mp4">
                                             </video>
                                         @else
-                                            <img src="{{ asset('/storage/' . $job->bukti1) }}" height="200px">
+                                            <img src="{{ asset('/storage/' . $job->bukti1) }}" height="200px" width="360px">
                                         @endif
                                     @endif
                                     @if ($job->bukti2 != null)
                                         @if (pathinfo(storage_path($job->bukti2), PATHINFO_EXTENSION) == 'mp4')
-                                            <video height="300px" controls>
+                                            <video height="200px" controls>
                                                 <source src="{{ asset('/storage/' . $job->bukti2) }}" type="video/mp4">
                                             </video>
                                         @else
-                                            <img src="{{ asset('/storage/' . $job->bukti2) }}" height="200px">
+                                            <img src="{{ asset('/storage/' . $job->bukti2) }}" height="200px" width="360px">
                                         @endif
                                     @endif
                                     @if ($job->bukti3 != null)
                                         @if (pathinfo(storage_path($job->bukti3), PATHINFO_EXTENSION) == 'mp4')
-                                            <video height="300px" controls>
+                                            <video height="200px" controls>
                                                 <source src="{{ asset('/storage/' . $job->bukti3) }}" type="video/mp4">
                                             </video>
                                         @else
-                                            <img src="{{ asset('/storage/' . $job->bukti3) }}" height="200px">
+                                            <img src="{{ asset('/storage/' . $job->bukti3) }}" height="200px" width="360px">
                                         @endif
                                     @endif
                                     @if ($job->bukti4 != null)
                                         @if (pathinfo(storage_path($job->bukti4), PATHINFO_EXTENSION) == 'mp4')
-                                            <video height="300px" controls>
+                                            <video height="200px" controls>
                                                 <source src="{{ asset('/storage/' . $job->bukti4) }}" type="video/mp4">
                                             </video>
                                         @else
-                                            <img src="{{ asset('/storage/' . $job->bukti4) }}" height="200px">
+                                            <img src="{{ asset('/storage/' . $job->bukti4) }}" height="200px" width="360px">
                                         @endif
                                     @endif
                                     @if ($job->bukti5 != null)
                                         @if (pathinfo(storage_path($job->bukti5), PATHINFO_EXTENSION) == 'mp4')
-                                            <video height="300px" controls>
+                                            <video height="200px" controls>
                                                 <source src="{{ asset('/storage/' . $job->bukti5) }}" type="video/mp4">
                                             </video>
                                         @else
-                                            <img src="{{ asset('/storage/' . $job->bukti5) }}" height="200px">
+                                            <img src="{{ asset('/storage/' . $job->bukti5) }}" height="200px" width="360px">
                                         @endif
                                     @endif
                                 </div>
