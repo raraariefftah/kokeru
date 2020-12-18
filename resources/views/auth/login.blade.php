@@ -123,14 +123,6 @@ required autocomplete="email" autofocus>--}}
                     @enderror
                 </div>
 
-                <p class="forgot">
-                    @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                    @endif
-                </p>
-
                 <button type="submit" class="button button-block">
                     {{ __('Login') }}
                 </button>
@@ -142,7 +134,7 @@ required autocomplete="email" autofocus>--}}
         <!-- partial -->
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src="{{asset('/style/dist/js/login.js')}}"></script>
-
+    </div>
 </body>
 
 </html>
