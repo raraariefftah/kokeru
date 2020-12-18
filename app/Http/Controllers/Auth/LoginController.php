@@ -34,7 +34,7 @@ class LoginController extends Controller
             return '/manager';
         }
         else if(Auth::user()->role=='cs'){
-            return '/customer_service';
+            return '/cleaning_service';
         }
         else{
             return '/';

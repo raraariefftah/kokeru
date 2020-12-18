@@ -22,7 +22,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('/customer_service/update_password/' . Auth::user()->id_user) }}" method="post">
+                    <form role="form" action="{{ url('/cleaning_service/update_password/' . Auth::user()->id_user) }}" method="post">
                         @csrf
                         @method('patch')
                         <div class="card-body">

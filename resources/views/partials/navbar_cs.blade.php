@@ -23,7 +23,7 @@
     <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-white navbar-light topbar mb-4 static-top shadow">
     <div>
-        <h1 class="h5 mb-1 ml-2  text-gray-600">Dashboard Customer Service</h1>
+        <h1 class="h5 mb-1 ml-2  text-gray-600">Dashboard Cleaning Service</h1>
     </div>
 
     <ul class="navbar-nav ml-auto">
@@ -35,11 +35,11 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{url('/customer_service/edit_profil/'.Auth::user()->id_user)}}">
+                <a class="dropdown-item" href="{{url('/cleaning_service/edit_profil/'.Auth::user()->id_user)}}">
                     <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                     Edit Profile
                 </a>
-                <a class="dropdown-item" href="{{url('/customer_service/ubah_password/'.Auth::user()->id_user)}}">
+                <a class="dropdown-item" href="{{url('/cleaning_service/ubah_password/'.Auth::user()->id_user)}}">
                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                     Ubah Password
                 </a>
@@ -71,6 +71,7 @@
     <script src="{{ asset('/style/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/style/dist/js/demo.js') }}"></script>
+</div>
 </body>
 
 </html>

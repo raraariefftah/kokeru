@@ -21,7 +21,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{url('/customer_service/update_profil/'.Auth::user()->id_user)}}"
+                <form role="form" action="{{url('/cleaning_service/update_profil/'.Auth::user()->id_user)}}"
                       method="post">
                     @csrf
                     @method('patch')
