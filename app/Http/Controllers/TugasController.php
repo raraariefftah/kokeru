@@ -399,8 +399,7 @@ class TugasController extends Controller
 
     public function print_laporan_excel($waktutugas, $status)
     {
-        $waktu = Carbon::now()->translatedFormat('l, d F Y H:i');
 
-        return Excel::download(new PrintTugas($waktutugas, $status), "laporan_tugas_{$waktu}.xlsx");
+        return Excel::download(new PrintTugas($waktutugas, $status), "laporan_tugas_{$waktutugas}.xlsx");
     }
 }
