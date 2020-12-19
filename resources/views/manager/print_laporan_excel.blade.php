@@ -25,5 +25,5 @@
 
 <p>Approval</p>
 <p>&lt;&lt;ttd&gt;&gt;</p>
-<p>Nama Manajer</p>
-<p>Manajer</p>
+<p>{{ Auth::user()->nama }}</p>
+<p>Manager</p>
